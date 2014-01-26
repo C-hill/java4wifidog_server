@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="wifidog"
+  id="myeclipse.1390354507560"
+  context-root="/wifidog"
+  j2ee-spec="5.0"
+  archive="wifidog.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
