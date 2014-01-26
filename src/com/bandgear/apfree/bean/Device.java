@@ -22,6 +22,7 @@ public class Device implements Serializable{
 		return kind;
 	}
 	
+	
 	public void setKind(int kind) {
 		this.kind = kind;
 	}
