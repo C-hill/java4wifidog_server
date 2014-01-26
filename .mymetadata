@@ -7,7 +7,7 @@
   j2ee-spec="5.0"
   archive="wifidog.war">
   <attributes>
-    <attribute name="webrootdir" value="WebRoot" />
+    <attribute name="webrootdir" value="/WebRoot" />
   </attributes>
 </project-module>
 
