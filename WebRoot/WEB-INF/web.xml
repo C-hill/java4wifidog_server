@@ -20,7 +20,7 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 	
- 
+<!--     wifidog接口                   -->
   <!--                    auth                   -->
   <servlet>
     <servlet-name>AuthServlet</servlet-name>
@@ -47,6 +47,44 @@
     <servlet-name>LoginValidateServlet</servlet-name>
     <servlet-class>com.bandgear.apfree.controller.wifidog.LoginValidateServlet</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RouterServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.RouterServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeviceServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.DeviceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HostServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.HostServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>IpWhiteServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.IpWhiteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MacBlackServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.MacBlackServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MacWhiteServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.MacWhiteServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+  
+  
   
 	<filter-mapping>
 		<filter-name>url</filter-name>
@@ -76,6 +114,47 @@
   <servlet-mapping>
     <servlet-name>LoginValidateServlet</servlet-name>
     <url-pattern>/loginValidate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/api/wifidog_user/get_all</url-pattern>
+    <url-pattern>/api/wifidog_user/add</url-pattern>
+    <url-pattern>/api/wifidog_user/delete</url-pattern>
+    <url-pattern>/api/wifidog_user/modify</url-pattern>
+    <url-pattern>/api/wifidog_user/active</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RouterServlet</servlet-name>
+    <url-pattern>/api/get_status</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeviceServlet</servlet-name>
+    <url-pattern>/api/client_list</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HostServlet</servlet-name>
+    <url-pattern>/api/client_op/host/get</url-pattern>
+    <url-pattern>/api/client_op/host/add</url-pattern>
+    <url-pattern>/api/client_op/host/delete</url-pattern>
+    <url-pattern>/api/client_op/host/modify</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IpWhiteServlet</servlet-name>
+    <url-pattern>/api/client_op/ipwhite/get</url-pattern>
+    <url-pattern>/api/client_op/ipwhite/add</url-pattern>
+    <url-pattern>/api/client_op/ipwhite/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MacBlackServlet</servlet-name>
+    <url-pattern>/api/client_op/macblack/get</url-pattern>
+    <url-pattern>/api/client_op/macblack/add</url-pattern>
+    <url-pattern>/api/client_op/macblack/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MacWhiteServlet</servlet-name>
+    <url-pattern>/api/client_op/macwhite/get</url-pattern>
+    <url-pattern>/api/client_op/macwhite/add</url-pattern>
+    <url-pattern>/api/client_op/macwhite/delete</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

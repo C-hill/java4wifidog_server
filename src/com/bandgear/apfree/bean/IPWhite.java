@@ -4,17 +4,14 @@ import java.io.Serializable;
 
 public class IPWhite implements Serializable{
 	/**
-	 * "id":"1",
-		"ap_id":"1",
-		"ip":"192.168.1.9",
-		"netmask":"255.255.255.255",
-		"enable":"0"
+	 * 对应rule_ipwhite表
 	 */
-	private int id;
+	private Integer ap_id;
+	private Integer id;
 	private String ip;
 	private String netmask;
-	private int enable;
-	public IPWhite(int id, String ip, String netmask, int enable) {
+	private Integer enable;
+	public IPWhite(Integer id, String ip, String netmask, Integer enable) {
 		super();
 		this.id = id;
 		this.ip = ip;
@@ -22,10 +19,10 @@ public class IPWhite implements Serializable{
 		this.enable = enable;
 	}
 	public IPWhite(){};
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getIp() {
@@ -40,11 +37,16 @@ public class IPWhite implements Serializable{
 	public void setNetmask(String netmask) {
 		this.netmask = netmask;
 	}
-	public int getEnable() {
+	public Integer getEnable() {
 		return enable;
 	}
-	public void setEnable(int enable) {
+	public void setEnable(Integer enable) {
 		this.enable = enable;
 	}
-	
+	public Integer getAp_id() {
+		return ap_id;
+	}
+	public void setAp_id(Integer apId) {
+		ap_id = apId;
+	}
 }

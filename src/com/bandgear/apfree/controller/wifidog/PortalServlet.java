@@ -20,5 +20,4 @@ public class PortalServlet extends HttpServlet {
 		//用户登录成功，并且路由器放行后，重定向到某个页面
 		response.sendRedirect("http://www.baidu.com");
 	}
-
 }

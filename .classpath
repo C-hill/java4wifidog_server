@@ -10,5 +10,10 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-lang.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-dbutils-1.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-pool-1.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

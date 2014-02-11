@@ -3,10 +3,14 @@ package com.bandgear.apfree.bean;
 import java.io.Serializable;
 
 public class User implements Serializable{
-	private int id;
+	/**
+	 * 对应ap_user表
+	 */
+	private Integer id;
+	private Integer ap_id;
 	private String username;
 	private String password;
-	private int enable;
+	private Integer enable;
 	public String getUsername() {
 		return username;
 	}
@@ -19,17 +23,23 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getEnable() {
+	public Integer getEnable() {
 		return enable;
 	}
-	public void setEnable(int enable) {
+	public void setEnable(Integer enable) {
 		this.enable = enable;
 	}
 	
-	public int getId() {
+	public Integer getAp_id() {
+		return ap_id;
+	}
+	public void setAp_id(Integer apId) {
+		ap_id = apId;
+	}
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 }

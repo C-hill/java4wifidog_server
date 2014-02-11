@@ -1,6 +1,9 @@
 package com.bandgear.apfree.filter;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,10 +14,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bandgear.apfree.bean.Router;
+import com.bandgear.apfree.dao.Dao;
+import com.bandgear.apfree.dao.impl.RouterDao;
+
 public class URLFilter implements Filter {
 
 	public void destroy() {
-
 	}
 
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
@@ -32,11 +38,10 @@ public class URLFilter implements Filter {
 //		System.out.println(scheme);
 //		response.getOutputStream().write("write......".getBytes());
 		arg2.doFilter(request, response);//放行
-//		System.out.println("...........");
+		
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {
-
 	}
 
 }

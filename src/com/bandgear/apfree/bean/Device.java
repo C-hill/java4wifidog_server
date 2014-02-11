@@ -4,26 +4,29 @@ package com.bandgear.apfree.bean;
 import java.io.Serializable;
 
 public class Device implements Serializable{
+	/**
+	 * 连接设备，对应device表
+	 */
 	private String ip;//连接设备的ip地址
 	private String mac;// mac地址
-	private int outgoing;//上传流量 单位 b
-	private int incoming;//下载流量 单位 b
-	private int uprate;//上传速度
-	private int downrate;//下载速度
-	private int status;//状态： 1.登录请求  3.计数状态（在线）
+	private Integer outgoing;//上传流量 单位 b
+	private Integer incoming;//下载流量 单位 b
+	private Integer uprate;//上传速度
+	private Integer downrate;//下载速度
+	private Integer status;//状态： 1.登录请求  3.计数状态（在线）
 	private String update_time;//最后更新时间
 	private String netmask;//子网掩码(没使用)
 	private String token;//
-	private int id;//
-	private int in_ipwhite;//是否白名单
-	private int kind;//客户端类型： 1，pc 2，移动设备
+	private Integer id;//
+	private Integer in_ipwhite;//是否白名单
+	private Integer kind;//客户端类型： 1，pc 2，移动设备
 	
-	public int getKind() {
+	public Integer getKind() {
 		return kind;
 	}
 	
 	
-	public void setKind(int kind) {
+	public void setKind(Integer kind) {
 		this.kind = kind;
 	}
 	public String getIp() {
@@ -32,16 +35,16 @@ public class Device implements Serializable{
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-	public int getUprate() {
+	public Integer getUprate() {
 		return uprate;
 	}
-	public void setUprate(int uprate) {
+	public void setUprate(Integer uprate) {
 		this.uprate = uprate;
 	}
-	public int getDownrate() {
+	public Integer getDownrate() {
 		return downrate;
 	}
-	public void setDownrate(int downrate) {
+	public void setDownrate(Integer downrate) {
 		this.downrate = downrate;
 	}
 	public String getNetmask() {
@@ -50,10 +53,10 @@ public class Device implements Serializable{
 	public void setNetmask(String netmask) {
 		this.netmask = netmask;
 	}
-	public int getIn_ipwhite() {
+	public Integer getIn_ipwhite() {
 		return in_ipwhite;
 	}
-	public void setIn_ipwhite(int in_ipwhite) {
+	public void setIn_ipwhite(Integer in_ipwhite) {
 		this.in_ipwhite = in_ipwhite;
 	}
 	public String getMac() {
@@ -62,10 +65,10 @@ public class Device implements Serializable{
 	public void setMac(String mac) {
 		this.mac = mac;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getToken() {
@@ -74,22 +77,22 @@ public class Device implements Serializable{
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public int getOutgoing() {
+	public Integer getOutgoing() {
 		return outgoing;
 	}
-	public void setOutgoing(int outgoing) {
+	public void setOutgoing(Integer outgoing) {
 		this.outgoing = outgoing;
 	}
-	public int getIncoming() {
+	public Integer getIncoming() {
 		return incoming;
 	}
-	public void setIncoming(int incoming) {
+	public void setIncoming(Integer incoming) {
 		this.incoming = incoming;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public String getUpdate_time() {

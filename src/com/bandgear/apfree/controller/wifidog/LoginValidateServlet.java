@@ -7,13 +7,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.bandgear.apfree.service.UserService;
+import com.bandgear.apfree.service.impl.UserServiceImpl;
 /**
  * 用户登录验证
  * @author hanyu
  *
  */
 public class LoginValidateServlet extends HttpServlet {
-
+	private UserService us=new UserServiceImpl();
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -30,7 +33,8 @@ public class LoginValidateServlet extends HttpServlet {
 //		System.out.println(redirectUrl);
 		
 		//验证用户名和密码的逻辑
-		boolean isValid="admin".equals(username)&&"admin".equals(password);
+//		boolean isValid="admin".equals(username)&&"admin".equals(password);
+		boolean isValid=us.loginValidate(username, password);
 		
 		if(isValid){//成功的话，重定向，路由器放行
 			System.out.println("验证成功");

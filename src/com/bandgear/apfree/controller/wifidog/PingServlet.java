@@ -1,6 +1,7 @@
 package com.bandgear.apfree.controller.wifidog;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,12 @@ import org.apache.log4j.Logger;
 
 import com.bandgear.apfree.bean.Host;
 import com.bandgear.apfree.bean.IPWhite;
+import com.bandgear.apfree.bean.Router;
+import com.bandgear.apfree.dao.Dao;
+import com.bandgear.apfree.dao.impl.RouterDao;
+import com.bandgear.apfree.service.PingService;
+import com.bandgear.apfree.service.impl.PingServiceImpl;
+import com.bandgear.apfree.utils.Utils4DB;
 
 /**
  * ping接口调用该servlet
@@ -37,57 +44,16 @@ public class PingServlet extends HttpServlet {
 //		String sys_load = req.getParameter("sys_load");
 //		String wifidog_uptime = req.getParameter("wifidog_uptime");
 		
-		JSONObject resultObject=new JSONObject();
-		JSONObject ruleObject=new JSONObject();
-		JSONArray ruleArray=new JSONArray();
-		List<Host> hostlist=new ArrayList<Host>();
-		JSONArray ipwhiteArray=new JSONArray();
-		
-		Host host1=new Host();
-		host1.setAp_id(1);
-		host1.setDown(1234);
-		host1.setIp("12.1.1.2");
-		
-		Host host2=new Host();
-		host2.setAp_id(1);
-		host2.setDown(1234);
-		host2.setIp("12.1.1.2");
-		
-		hostlist.add(host1);
-		hostlist.add(host2);
-		ruleObject.put("hostlist", hostlist);
-		
-		IPWhite ipWhite1=new IPWhite();
-		ipWhite1.setEnable(1);
-		ipWhite1.setId(145);
-		ipWhite1.setNetmask("255.255.255.255");
-		
-		IPWhite ipWhite2=new IPWhite();
-		ipWhite2.setEnable(1);
-		ipWhite2.setId(145);
-		ipWhite2.setNetmask("255.255.255.255");
-		
-		ipwhiteArray.add(ipWhite1);
-		ipwhiteArray.add(ipWhite2);
-		ruleObject.put("ipwhite", ipwhiteArray);
-		
-		
-		resultObject.put("rule", ruleObject);
-		String pongStr="Pong result="+resultObject.toString();
-		/**
-		 * 返回Pong
-		 * 格式为:
-		 * 		Pong+空格+result=json字符串
-		 * 
-		 * 
-		 * Pong result={
-		 * 		"rule":{
-		 * 			"hostlist":[{"ap_id":1,"down":1234,"enable":0,"id":0,"ip":"12.1.1.2","netmask":"","up":0},{"ap_id":1,"down":1234,"enable":0,"id":0,"ip":"12.1.1.2","netmask":"","up":0}],
-		 * 			"ipwhite":[{"enable":1,"id":145,"ip":"","netmask":"255.255.255.255"},{"enable":1,"id":145,"ip":"","netmask":"255.255.255.255"}]}
-		 * }
-		 * json字符串的完整格式请参见wifidog官方文档
-		 */
+		PingService ps=new PingServiceImpl();
+		String pongStr = ps.getPongStr();
 		resp.getOutputStream().write(pongStr.getBytes());
-
+		Dao<Router> dao=new RouterDao();
+		try {
+			List<Router> find = dao.find();
+			System.out.println(find.get(0).getSys_memfree());
+		} catch (SQLException e) {
+			System.out.println("dao errror");
+			e.printStackTrace();
+		}
 	}
 }

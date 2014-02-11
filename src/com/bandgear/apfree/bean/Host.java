@@ -2,20 +2,17 @@ package com.bandgear.apfree.bean;
 
 public class Host {
 	/**
-	 * "id":"1",
-		"ap_id":"1",
-		"ip":"192.168.1.9",
-		"netmask":"255.255.255.255",
-		"enable":"0"
+	 * 对应rule_host表
 	 */
-	private int id;
-	private int ap_id;
+	private Integer id;
+	private Integer ap_id;
 	private String ip;
-	private int up;
-	private int down;
+	private Integer up;
+	private Integer down;
 	private String netmask;
-	private int enable;
-	public Host(int id, int up, int down, int enable, String ip,
+	private Integer enable;
+	private Integer session;
+	public Host(Integer id, Integer up, Integer down, Integer enable, String ip,
 			String netmask) {
 		this.id=id;
 		this.ip=ip;
@@ -24,19 +21,18 @@ public class Host {
 		this.netmask=netmask;
 		this.enable=enable;
 	}
-	public Host() {
-	}
-	public int getId() {
+	public Host(){}
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getAp_id() {
+	public Integer getAp_id() {
 		return ap_id;
 	}
-	public void setAp_id(int ap_id) {
-		this.ap_id = ap_id;
+	public void setAp_id(Integer apId) {
+		ap_id = apId;
 	}
 	public String getIp() {
 		return ip;
@@ -44,29 +40,35 @@ public class Host {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
+	public Integer getUp() {
+		return up;
+	}
+	public void setUp(Integer up) {
+		this.up = up;
+	}
+	public Integer getDown() {
+		return down;
+	}
+	public void setDown(Integer down) {
+		this.down = down;
+	}
 	public String getNetmask() {
 		return netmask;
 	}
 	public void setNetmask(String netmask) {
 		this.netmask = netmask;
 	}
-	public int getEnable() {
+	public Integer getEnable() {
 		return enable;
 	}
-	public void setEnable(int enable) {
+	public void setEnable(Integer enable) {
 		this.enable = enable;
 	}
-	public int getUp() {
-		return up;
+	public Integer getSession() {
+		return session;
 	}
-	public void setUp(int up) {
-		this.up = up;
-	}
-	public int getDown() {
-		return down;
-	}
-	public void setDown(int down) {
-		this.down = down;
+	public void setSession(Integer session) {
+		this.session = session;
 	}
 	
 }

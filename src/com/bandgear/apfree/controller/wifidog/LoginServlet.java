@@ -76,6 +76,5 @@ public class LoginServlet extends HttpServlet {
 		public void setUrl(String url) {
 			this.url = url;
 		}
-		
 	}
 }
