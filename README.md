@@ -1,4 +1,4 @@
-开发环境：windows,myeclipse,mysql
+开发环境：windows,myeclipse,mysql。<br>
 1.tomcat server.xml文件配置：
 <Host name="localhost"  appBase="webapps"
             unpackWARs="true" autoDeploy="true"
