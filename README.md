@@ -1,5 +1,5 @@
 开发环境：windows,myeclipse,mysql。<br>
-1.tomcat server.xml文件配置：
+1.tomcat server.xml文件配置：<br>
 &ltHost name="localhost"  appBase="webapps"
             unpackWARs="true" autoDeploy="true"
             xmlValidation="false" xmlNamespaceAware="false">
