@@ -23,20 +23,20 @@ String mypath="http://192.168.1.97:8080/";
   
   <body>
   -----------------------获取-------------------------------------<br>
-  		<form name='get' action="<%=mypath%>wifidog/api/client_op/macwhite/get" method="get">
+  		<form name='get' action="<%=basePath%>api/client_op/macwhite/get" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------增加-------------------------------------<br>
-  		<form name='add' action="<%=mypath%>wifidog/api/client_op/macwhite/add" method="get">
+  		<form name='add' action="<%=basePath%>api/client_op/macwhite/add" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			mac:<input type="text" name="mac" value="" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------删除-------------------------------------<br>
-  		<form name='del' action="<%=mypath%>wifidog/api/client_op/macwhite/delete" method="get">
+  		<form name='del' action="<%=basePath%>api/client_op/macwhite/delete" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			mac:<input type="text" name="mac" value="" /> <br>

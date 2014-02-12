@@ -23,7 +23,7 @@ String mypath="http://192.168.1.97:8080/";
   
   <body>
   -----------------------auth接口-------------------------------------<br>
-  		<form name='formAuth' action="<%=mypath%>wifidog/auth/" method="get">
+  		<form name='formAuth' action="<%=basePath%>wifidog/auth/" method="get">
 			<br>
 			dev_license:<input type="text" name="dev_license" value="devlicense123456" /> <br>
 			run_mode:<input type="text" name="run_mode" value="runmode4asd" /> <br>
@@ -31,7 +31,7 @@ String mypath="http://192.168.1.97:8080/";
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------login接口-------------------------------------<br>
-  		<form name='formLogin' action="<%=mypath%>wifidog/login/" method="get">
+  		<form name='formLogin' action="<%=basePath%>wifidog/login/" method="get">
 			<br>
 			gw_address:<input type="text" name="gw_address" value="gwaddress" /> <br>
 			gw_port:<input type="text" name="gw_port" value="gwport" /> <br>
@@ -40,7 +40,7 @@ String mypath="http://192.168.1.97:8080/";
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------ping接口-------------------------------------<br>
-  		<form name='formPing' action="<%=mypath%>wifidog/ping/" method="get">
+  		<form name='formPing' action="<%=basePath%>wifidog/ping/" method="get">
 			<br>
 			gw_id:<input type="text" name="gw_id" value="gwid" /> <br>
 			sys_uptime:<input type="text" name="sys_uptime" value="1101" /> <br>
@@ -50,7 +50,7 @@ String mypath="http://192.168.1.97:8080/";
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------portal接口-------------------------------------<br>
-  		<form name='formPortal' action="<%=mypath%>wifidog/portal/" method="get">
+  		<form name='formPortal' action="<%=basePath%>wifidog/portal/" method="get">
 			<br>
 			gw_id:<input type="text" name="gw_id" value="gwid" /> <br>
 			<input type="submit" value="确定"/>

@@ -17,43 +17,52 @@ import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 
+import com.bandgear.apfree.bean.Ap;
 import com.bandgear.apfree.bean.Host;
 import com.bandgear.apfree.bean.IPWhite;
 import com.bandgear.apfree.bean.Router;
 import com.bandgear.apfree.dao.Dao;
 import com.bandgear.apfree.dao.impl.RouterDao;
+import com.bandgear.apfree.service.ApService;
 import com.bandgear.apfree.service.PingService;
+import com.bandgear.apfree.service.RouterService;
+import com.bandgear.apfree.service.impl.ApServiceImpl;
 import com.bandgear.apfree.service.impl.PingServiceImpl;
+import com.bandgear.apfree.service.impl.RouterServiceImpl;
 import com.bandgear.apfree.utils.Utils4DB;
 
 /**
  * ping接口调用该servlet
+ * 该接口每隔一段时间调用一次
  */
 public class PingServlet extends HttpServlet {
-	
+	PingService ps=new PingServiceImpl();
+	RouterService s=new RouterServiceImpl();
+	ApService as=new ApServiceImpl();
 	static Logger logger=Logger.getLogger(PingServlet.class);
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("ping接口被调用了");
 		System.out.println(req.getRequestURL().toString()+"?"+req.getQueryString());
+		Ap ap=new Ap();
+		ap.setDev_id(req.getParameter("dev_id"));
+		ap.setGw_id(req.getParameter("gw_id"));
+		as.add(ap);
+		//1.把传过来的数据添加打数据库
+		Router r=new Router();
+		r.setSys_uptime(Integer.parseInt(req.getParameter("sys_uptime")));
+		r.setSys_memfree(Integer.parseInt(req.getParameter("sys_memfree")));
+		r.setSys_load(Float.parseFloat(req.getParameter("sys_load")));
+		r.setWifidog_uptime(Integer.parseInt(req.getParameter("wifidog_uptime")));
+		r.setCpu_usage(Integer.parseInt(req.getParameter("cpu_usage")));
+		r.setNf_conntrack_num(Integer.parseInt(req.getParameter("nf_conntrack_num")));
+		String gw_id = req.getParameter("gw_id");
+		String dev_id = req.getParameter("dev_id");
+		s.addByDevId(r,dev_id);
 		
-//		String gw_id = req.getParameter("gw_id");
-//		String sys_uptime = req.getParameter("sys_uptime");
-//		String sys_memfree = req.getParameter("sys_memfree");
-//		String sys_load = req.getParameter("sys_load");
-//		String wifidog_uptime = req.getParameter("wifidog_uptime");
-		
-		PingService ps=new PingServiceImpl();
-		String pongStr = ps.getPongStr();
+		//2.响应
+		String pongStr = ps.getPongStr(dev_id);
 		resp.getOutputStream().write(pongStr.getBytes());
-		Dao<Router> dao=new RouterDao();
-		try {
-			List<Router> find = dao.find();
-			System.out.println(find.get(0).getSys_memfree());
-		} catch (SQLException e) {
-			System.out.println("dao errror");
-			e.printStackTrace();
-		}
 	}
 }

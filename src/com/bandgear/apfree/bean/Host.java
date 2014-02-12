@@ -1,6 +1,8 @@
 package com.bandgear.apfree.bean;
 
-public class Host {
+import java.io.Serializable;
+
+public class Host implements Serializable{
 	/**
 	 * 对应rule_host表
 	 */

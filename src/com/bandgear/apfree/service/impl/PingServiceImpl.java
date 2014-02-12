@@ -31,14 +31,14 @@ public class PingServiceImpl implements PingService{
 		}
 	}
 	@Override
-	public String getPongStr() {
+	public String getPongStr(String dev_id) {
 		List<Host> hosts=new ArrayList<Host>();
 		List<IPWhite> ipwhites=new ArrayList<IPWhite>();
 		List<MacBlack> macblacks=new ArrayList<MacBlack>();
 		try {
-			hosts = hostDao.find();
-			ipwhites = ipwhiteDao.find();
-			macblacks = macblackDao.find();
+			hosts = ((HostDao)hostDao).findByDevId(dev_id);
+			ipwhites = ((IPWhiteDao)ipwhiteDao).findByDevId(dev_id);
+			macblacks = ((MacBlackDao)macblackDao).findByDevId(dev_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

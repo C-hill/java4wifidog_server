@@ -6,8 +6,8 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import com.bandgear.apfree.bean.Host;
 import com.bandgear.apfree.bean.IPWhite;
-import com.bandgear.apfree.bean.Router;
 import com.bandgear.apfree.dao.Dao;
 import com.bandgear.apfree.utils.Utils4DB;
 
@@ -18,6 +18,7 @@ public class IPWhiteDao implements Dao<IPWhite>{
 			qr=new QueryRunner(Utils4DB.getDataSource());
 		}
 	}
+	
 	/**
 	 * 增加ipwhite
 	 */
@@ -62,5 +63,16 @@ public class IPWhiteDao implements Dao<IPWhite>{
 	 */
 	public void delByDeviceToken(String device_token) throws SQLException{
 		qr.update("delete from rule_ipwhite where ap_id=(select ap_id from ap where dev_md5=?)", device_token);
+	}
+
+	/**
+	 * 通过dev_id获取ipwhite
+	 * @param devId
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<IPWhite> findByDevId(String devId) throws SQLException {
+		return qr.query("select * from rule_ipwhite where ap_id =(select ap_id from ap where dev_id=?)", 
+				new BeanListHandler(Host.class), new Object[]{devId});
 	}
 }

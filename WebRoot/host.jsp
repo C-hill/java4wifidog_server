@@ -23,13 +23,13 @@ String mypath="http://192.168.1.97:8080/";
   
   <body>
   -----------------------获取-------------------------------------<br>
-  		<form name='get' action="<%=mypath%>wifidog/api/client_op/host/get" method="get">
+  		<form name='get' action="<%=basePath%>api/client_op/host/get" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------增加-------------------------------------<br>
-  		<form name='add' action="<%=mypath%>wifidog/api/client_op/host/add" method="get">
+  		<form name='add' action="<%=basePath%>api/client_op/host/add" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			ip:<input type="text" name="ip" value="" /> <br>
@@ -39,14 +39,14 @@ String mypath="http://192.168.1.97:8080/";
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------删除-------------------------------------<br>
-  		<form name='del' action="<%=mypath%>wifidog/api/client_op/host/delete" method="get">
+  		<form name='del' action="<%=basePath%>api/client_op/host/delete" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			id:<input type="text" name="id" value="" />(正整数) <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------修改-------------------------------------<br>
-  		<form name='modify' action="<%=mypath%>wifidog/api/client_op/host/modify" method="get">
+  		<form name='modify' action="<%=basePath%>api/client_op/host/modify" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			id:<input type="text" name="id" value="" />(正整数) <br>

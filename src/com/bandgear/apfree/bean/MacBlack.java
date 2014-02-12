@@ -1,6 +1,8 @@
 package com.bandgear.apfree.bean;
 
-public class MacBlack {
+import java.io.Serializable;
+
+public class MacBlack implements Serializable{
 	/**
 	 * 对应rule_macblack表
 	 */

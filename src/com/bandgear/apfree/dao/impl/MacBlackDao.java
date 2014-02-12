@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import com.bandgear.apfree.bean.Host;
 import com.bandgear.apfree.bean.MacBlack;
 import com.bandgear.apfree.bean.User;
 import com.bandgear.apfree.dao.Dao;
@@ -18,17 +19,27 @@ public class MacBlackDao implements Dao<MacBlack>{
 			qr=new QueryRunner(Utils4DB.getDataSource());
 		}
 	}
+	
+	/**
+	 * 增加macblack
+	 */
 	@Override
 	public void add(MacBlack t) throws SQLException {
 		qr.update("insert into rule_macblack(ap_id,mac,enable) values(?,?,?)", new Object[]{t.getAp_id(),t.getMac(),t.getEnable()+""});
 	}
 
+	/**
+	 * 删除macblack（通过mac）
+	 */
 	@Override
 	public void delete(MacBlack t) throws SQLException {
 		qr.update("delete from rule_macblack where mac=?", t.getMac());
 		
 	}
 
+	/**
+	 * 获取所有macblack
+	 */
 	@Override
 	public List<MacBlack> find() throws SQLException {
 		return qr.query("select * from rule_macblack", new BeanListHandler(MacBlack.class));
@@ -55,5 +66,16 @@ public class MacBlackDao implements Dao<MacBlack>{
 	 */
 	public void delByDeviceToken(String device_token) throws SQLException{
 		qr.update("delete from rule_macblack where ap_id=(select ap_id from ap where dev_md5=?)", device_token);
+	}
+	
+	/**
+	 * 通过dev_id获取macblack
+	 * @param devId
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<MacBlack> findByDevId(String devId) throws SQLException {
+		return qr.query("select * from rule_macblack where ap_id =(select ap_id from ap where dev_id=?)", 
+				new BeanListHandler(Host.class), new Object[]{devId});
 	}
 }

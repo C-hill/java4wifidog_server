@@ -2,25 +2,30 @@ package com.bandgear.apfree.bean;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Device implements Serializable{
 	/**
-	 * 连接设备，对应device表
+	 * 连接设备，对应client表
 	 */
+	private Integer id;//
+	private Integer ap_id;
+	private Integer kind;//客户端类型： 1，pc 2，移动设备
 	private String ip;//连接设备的ip地址
 	private String mac;// mac地址
+	private String token; 
 	private Integer outgoing;//上传流量 单位 b
 	private Integer incoming;//下载流量 单位 b
 	private Integer uprate;//上传速度
 	private Integer downrate;//下载速度
 	private Integer status;//状态： 1.登录请求  3.计数状态（在线）
-	private String update_time;//最后更新时间
-	private String netmask;//子网掩码(没使用)
-	private String token;//
-	private Integer id;//
-	private Integer in_ipwhite;//是否白名单
-	private Integer kind;//客户端类型： 1，pc 2，移动设备
+	private Integer login_count;
+	private Date update_time;//最后更新时间
+	private Date login_time;
 	
+	//---------------------
+	private String netmask;//子网掩码(没使用)
+	private Integer in_ipwhite;//是否白名单
 	public Integer getKind() {
 		return kind;
 	}
@@ -95,12 +100,47 @@ public class Device implements Serializable{
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	public String getUpdate_time() {
+	
+	public Integer getAp_id() {
+		return ap_id;
+	}
+
+
+	public void setAp_id(Integer apId) {
+		ap_id = apId;
+	}
+
+
+	public Date getUpdate_time() {
 		return update_time;
 	}
-	public void setUpdate_time(String update_time) {
-		this.update_time = update_time;
+
+
+	public void setUpdate_time(Date updateTime) {
+		update_time = updateTime;
 	}
+
+
+	public Integer getLogin_count() {
+		return login_count;
+	}
+
+
+	public void setLogin_count(Integer loginCount) {
+		login_count = loginCount;
+	}
+
+
+	public Date getLogin_time() {
+		return login_time;
+	}
+
+
+	public void setLogin_time(Date loginTime) {
+		login_time = loginTime;
+	}
+
+
 	public String toStringTest() {
 		return "设备id："+this.id+"\ntoken："+this.token+"\nmac："+this.mac+"\n下载流量："+this.incoming+"\n上传流量："+this.outgoing+"\n最后更新时间："+this.update_time;
 	}

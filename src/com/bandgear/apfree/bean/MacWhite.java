@@ -1,6 +1,8 @@
 package com.bandgear.apfree.bean;
 
-public class MacWhite {
+import java.io.Serializable;
+
+public class MacWhite implements Serializable{
 	/**
 	 * 对应rule_macwhite表
 	 */

@@ -2,6 +2,9 @@ package com.bandgear.apfree.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import com.bandgear.apfree.bean.Device;
+import com.bandgear.apfree.bean.Host;
 /**
  * dao接口
  * @author hill

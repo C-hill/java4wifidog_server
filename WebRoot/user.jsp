@@ -23,13 +23,13 @@ String mypath="http://192.168.1.97:8080/";
   
   <body>
   -----------------------获取-------------------------------------<br>
-  		<form name='get' action="<%=mypath%>wifidog/api/wifidog_user/get_all" method="get">
+  		<form name='get' action="<%=basePath%>api/wifidog_user/get_all" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------增加-------------------------------------<br>
-  		<form name='add' action="<%=mypath%>wifidog/api/wifidog_user/add" method="get">
+  		<form name='add' action="<%=basePath%>api/wifidog_user/add" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			username:<input type="text" name="username" value="" /> <br>
@@ -41,14 +41,14 @@ String mypath="http://192.168.1.97:8080/";
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------删除-------------------------------------<br>
-  		<form name='del' action="<%=mypath%>wifidog/api/wifidog_user/delete" method="get">
+  		<form name='del' action="<%=basePath%>api/wifidog_user/delete" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			id:<input type="text" name="id" value="" />(正整数) <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------修改-------------------------------------<br>
-  		<form name='modify' action="<%=mypath%>wifidog/api/wifidog_user/modify" method="get">
+  		<form name='modify' action="<%=basePath%>api/wifidog_user/modify" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			id:<input type="text" name="id" value="" /> <br>
@@ -57,7 +57,7 @@ String mypath="http://192.168.1.97:8080/";
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------启用禁用-------------------------------------<br>
-  		<form name='active' action="<%=mypath%>wifidog/api/wifidog_user/active" method="get">
+  		<form name='active' action="<%=basePath%>api/wifidog_user/active" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			id:<input type="text" name="id" value="" /> <br>

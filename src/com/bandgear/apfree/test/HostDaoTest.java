@@ -1,5 +1,6 @@
 package com.bandgear.apfree.test;
 
+import java.security.MessageDigest;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.junit.Test;
 
 import com.bandgear.apfree.bean.Host;
 import com.bandgear.apfree.dao.impl.HostDao;
+import com.bandgear.apfree.utils.Md5Utils;
 
 public class HostDaoTest {
 	Host h=new Host();
@@ -70,7 +72,7 @@ public class HostDaoTest {
 			for(Host host:findByDeviceToken){
 				System.out.println(host.getIp());
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

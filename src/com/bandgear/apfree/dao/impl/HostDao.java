@@ -18,6 +18,7 @@ public class HostDao implements Dao<Host>{
 			qr=new QueryRunner(Utils4DB.getDataSource());
 		}
 	}
+	
 	/**
 	 * 增加host
 	 */
@@ -60,5 +61,16 @@ public class HostDao implements Dao<Host>{
 	public List<Host> findByDeviceToken(String device_token) throws SQLException{
 		return qr.query("select * from rule_host where ap_id =(select ap_id from ap where dev_md5=?)", 
 				new BeanListHandler(Host.class), new Object[]{device_token});
+	}
+	
+	/**
+	 * 通过dev_id获取host
+	 * @param devId
+	 * @return
+	 * @throws SQLException 
+	 */
+	public List<Host> findByDevId(String devId) throws SQLException {
+		return qr.query("select * from rule_host where ap_id =(select ap_id from ap where dev_id=?)", 
+				new BeanListHandler(Host.class), new Object[]{devId});
 	}
 }

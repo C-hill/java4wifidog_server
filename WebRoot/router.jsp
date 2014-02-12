@@ -23,7 +23,7 @@ String mypath="http://192.168.1.97:8080/";
   
   <body>
   -----------------------获取-------------------------------------<br>
-  		<form name='get' action="<%=mypath%>wifidog/api/get_status" method="get">
+  		<form name='get' action="<%=basePath%>api/get_status" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="adfsadf1312" /> <br>
 			<input type="submit" value="确定"/>

@@ -33,7 +33,10 @@ public class MacWhiteDao implements Dao<MacWhite>{
 	public void delete(MacWhite t) throws SQLException {
 		qr.update("delete from rule_macwhite where mac=?", t.getMac());
 	}
-
+	
+	/**
+	 * 获取所有的macwhite
+	 */
 	@Override
 	public List<MacWhite> find() throws SQLException {
 		return qr.query("select * from rule_macwhite", new BeanListHandler(MacBlack.class));

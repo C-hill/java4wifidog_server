@@ -1,6 +1,7 @@
 package com.bandgear.apfree.test;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -18,6 +19,10 @@ public class DeviceDaoTest {
 	public void testFind(){
 		try {
 			List<Device> find = dao.find();
+			Date d=new Date();
+			System.out.println(d.toLocaleString());
+			System.out.println(d.toGMTString());
+			System.out.println(d.toString());
 			for(Device device:find){
 				System.out.println(device.getMac());
 			}

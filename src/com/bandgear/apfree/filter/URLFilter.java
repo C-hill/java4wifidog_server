@@ -1,9 +1,6 @@
 package com.bandgear.apfree.filter;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,9 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bandgear.apfree.bean.Router;
-import com.bandgear.apfree.dao.Dao;
-import com.bandgear.apfree.dao.impl.RouterDao;
 
 public class URLFilter implements Filter {
 

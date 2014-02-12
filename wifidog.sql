@@ -16,7 +16,7 @@ CREATE TABLE `ap` (
   `ap_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '数据库内id号',
   `gw_id` char(32) NOT NULL COMMENT 'wifidog提供的 gw_id',
   `dev_id` char(46) DEFAULT NULL,
-  `dev_md5` char(32) DEFAULT NULL COMMENT '设备id的md5值',
+  `dev_md5` char(255) DEFAULT NULL COMMENT '设备id的md5值',
   `name` char(32) DEFAULT NULL COMMENT '路由器的名字',
   `remark` text COMMENT '备注',
   `enable` enum('0','1') NOT NULL DEFAULT '1' COMMENT '是否可以使用',
