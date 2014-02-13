@@ -22,24 +22,13 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		LonginParam param=new LonginParam();
 		String method = request.getMethod();
-		if("get".equalsIgnoreCase(method)){
-			param.setGw_address(request.getParameter("gw_address"));
-			param.setGw_id(request.getParameter("gw_id"));
-			param.setGw_port(request.getParameter("gw_port"));
-			param.setUrl(request.getParameter("url"));
-			
-//			session.setAttribute("gw_address", request.getParameter("gw_address"));
-//			session.setAttribute("gw_id", request.getParameter("gw_id"));
-//			session.setAttribute("gw_port", request.getParameter("gw_port"));
-//			session.setAttribute("url", request.getParameter("url"));
-		}else{
-			param.setGw_address("");
-			param.setGw_id("");
-			param.setGw_port("");
-			param.setUrl("");
-		}
+		param.setGw_address(request.getParameter("gw_address"));
+		param.setGw_id(request.getParameter("gw_id"));
+		param.setGw_port(request.getParameter("gw_port"));
+		param.setUrl(request.getParameter("url"));
+		param.setUrl(request.getParameter("dev_id"));
 		/**
-		 * 跳转到用户登录页面
+		 * 跳转到用户登录认证页面
 		 */
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 	}
@@ -52,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 		private String gw_port;
 		private String gw_id;
 		private String url;
+		private String dev_id;
 		public String getGw_address() {
 			return gw_address;
 		}
@@ -76,5 +66,12 @@ public class LoginServlet extends HttpServlet {
 		public void setUrl(String url) {
 			this.url = url;
 		}
+		public String getDev_id() {
+			return dev_id;
+		}
+		public void setDev_id(String devId) {
+			dev_id = devId;
+		}
+		
 	}
 }

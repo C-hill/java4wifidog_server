@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class User implements Serializable{
 	/**
-	 * 对应ap_user表
+	 * 用户，对应ap_user表
 	 */
 	private Integer id;
 	private Integer ap_id;

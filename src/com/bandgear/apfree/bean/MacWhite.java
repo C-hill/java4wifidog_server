@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class MacWhite implements Serializable{
 	/**
-	 * 对应rule_macwhite表
+	 * mac白名单，对应rule_macwhite表
 	 */
 	private Integer id;
 	private Integer ap_id;

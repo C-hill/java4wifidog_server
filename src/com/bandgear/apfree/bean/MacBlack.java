@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class MacBlack implements Serializable{
 	/**
-	 * 对应rule_macblack表
+	 * mac黑名单，对应rule_macblack表
 	 */
 	private Integer id;
 	private String mac;

@@ -3,7 +3,7 @@ package com.bandgear.apfree.service;
 import com.bandgear.apfree.bean.User;
 
 public interface UserService {
-	boolean loginValidate(String username, String password);
+	boolean loginValidate(User u, String dev_id);
 
 	String getUsers(String deviceToken);
 	String addUser(User user,String deviceToken);

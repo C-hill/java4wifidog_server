@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Host implements Serializable{
 	/**
-	 * 对应rule_host表
+	 * 主机规则，对应rule_host表
 	 */
 	private Integer id;
 	private Integer ap_id;

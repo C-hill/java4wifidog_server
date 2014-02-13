@@ -54,6 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <input type="hidden" name="gw_port" value="${param.gw_port}">
                 <input type="hidden" name="gw_id" value="${param.gw_id}">
                 <input type="hidden" name="url" value="${param.url}">
+                <input type="hidden" name="dev_id" value="${param.dev_id}">
                 <div class="login">认证登录</div>
 				<div class="username-text">用户名：</div>
 				<div class="password-text">密码：</div>

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Router implements Serializable{
 	/**
-	 * 对应ap_status表
+	 * 路由器，对应ap_status表
 	 */
 	private Integer ap_id;//
 	private Integer client_num;//连接设备数量

@@ -93,11 +93,11 @@ public class UserDaoTest {
 	 */
 	@Test
 	public void testFindUserByUsernameAndPassword(){
-		u.setUsername("hill");
-		u.setPassword("pword");
+		u.setUsername("admin");
+		u.setPassword("admin");
 		try {
-			User findUserByUsernameAndPassword = ud.findUserByUsernameAndPassword(u);
-			System.out.println(findUserByUsernameAndPassword);
+			User findUserByUsernamePasswordAndDevId = ud.findUserByUsernamePasswordAndDevId(u, "48000201000-66000053164000-35718113561096060");
+			System.out.println(findUserByUsernamePasswordAndDevId);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class IPWhite implements Serializable{
 	/**
-	 * 对应rule_ipwhite表
+	 * ip白名单，对应rule_ipwhite表
 	 */
 	private Integer ap_id;
 	private Integer id;

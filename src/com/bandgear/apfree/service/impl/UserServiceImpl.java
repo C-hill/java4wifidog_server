@@ -25,13 +25,10 @@ public class UserServiceImpl implements UserService{
 	 * 用户登陆验证
 	 */
 	@Override
-	public boolean loginValidate(String username ,String password){
-		User u=new User();
-		u.setUsername(username);
-		u.setPassword(password);
+	public boolean loginValidate(User u, String dev_id){
 		try {
-			User findUserByUsernameAndPassword = ((UserDao)ud).findUserByUsernameAndPassword(u);
-			if(findUserByUsernameAndPassword!=null){
+			User findUserByUsernamePasswordAndDevId = ((UserDao)ud).findUserByUsernamePasswordAndDevId(u,dev_id);
+			if(findUserByUsernamePasswordAndDevId!=null){
 				return true;
 			}
 		} catch (SQLException e) {
@@ -71,7 +68,7 @@ public class UserServiceImpl implements UserService{
 	public String addUser(User user,String deviceToken) {
 		JSONObject resultObj=new JSONObject();
 		try {
-			if(Utils4Service.checkDeviceToken(deviceToken)!=1){//判断device_token是否合法
+			if(Utils4Service.checkDeviceToken(deviceToken)==0){//判断device_token是否合法
 				resultObj.put("code", "0");
 				resultObj.put("message", "device_token is invalid!");
 				return resultObj.toString();

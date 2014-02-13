@@ -36,7 +36,6 @@ public class UserServlet extends HttpServlet {
 			user.setUsername(username);
 			user.setPassword(password);
 			user.setEnable(Integer.parseInt(enable));
-			
 			respJson=us.addUser(user,device_token);
 		}else if(opertion.equals("delete")){//删除
 			String id=req.getParameter("id");

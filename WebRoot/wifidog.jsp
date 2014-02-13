@@ -2,7 +2,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String mypath="http://192.168.1.97:8080/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -16,6 +15,7 @@ String mypath="http://192.168.1.97:8080/";
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" href="<%=basePath%>images/css/mystyle.css" type="text/css" />
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->

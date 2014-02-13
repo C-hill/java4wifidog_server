@@ -55,9 +55,9 @@ public class UserDao implements Dao<User>{
 	 * @return 
 	 * @throws SQLException
 	 */
-	public User findUserByUsernameAndPassword(User u) throws SQLException{
-		 List<User> users=qr.query("select * from ap_user where username=? and password=?",
-				new String[]{u.getUsername(),u.getPassword()}, new BeanListHandler(User.class));
+	public User findUserByUsernamePasswordAndDevId(User u,String dev_id) throws SQLException{
+		 List<User> users=qr.query("select * from ap_user where username=? and password=? and ap_id=(select ap_id from ap where dev_id=?)",
+				new String[]{u.getUsername(),u.getPassword(),dev_id}, new BeanListHandler(User.class));
 		 return users.size()==0?null:users.get(0);
 	}
 	

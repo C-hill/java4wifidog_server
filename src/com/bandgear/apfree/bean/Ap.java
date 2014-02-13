@@ -6,10 +6,10 @@ public class Ap implements Serializable{
 	/**
 	 * 对应ap表
 	 */
-	private Integer ap_id;
+	private Integer ap_id;//
 	private String gw_id;
-	private String dev_id;
-	private String dev_md5;//device_token
+	private String dev_id;//路由器设备id
+	private String dev_md5;//device_token，对dev_id加密所得
 	private String name;
 	private String remark;
 	private Integer enable;
