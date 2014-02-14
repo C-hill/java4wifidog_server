@@ -57,7 +57,4 @@ public class LoginValidateServlet extends HttpServlet {
 			response.getOutputStream().write("验证失败!".getBytes());
 		}
 	}
-	public LoginValidateServlet() {
-		super();
-	}
 }

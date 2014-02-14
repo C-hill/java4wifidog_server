@@ -27,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 		 * 没有dev_id  是apfree版wifidog
 		 */
 		//1.如果没有dev_id，认为是官方版wifidog
-		System.out.println(request.getParameter("dev_id"));
 		if(request.getParameter("dev_id")==null){
 			/**
 			 * 跳转到用户登录认证页面

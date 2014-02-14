@@ -60,7 +60,7 @@ public class PingServiceImpl implements PingService{
 	}
 	
 	/**
-	 * 原版wifidog
+	 * for官方版wifidog
 	 */
 	@Override
 	public String getPongStr4Origin() {
