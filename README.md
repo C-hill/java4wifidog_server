@@ -4,7 +4,7 @@ java4wifidog_server
 wifidog认证服务器java实现
 
 开发环境：windows,tomcat,myeclipse,mysql。<br><br>
-说明：本项目基于apfree wifidog业务实现，同时兼容原版wifidog<br><br>
+说明：本项目基于apfree wifidog业务实现，同时兼容原版wifidog。<br><br>
 
 使用步骤：<br>
 1.获取apfree固件并刷到合适的路由器上.<br><br>
