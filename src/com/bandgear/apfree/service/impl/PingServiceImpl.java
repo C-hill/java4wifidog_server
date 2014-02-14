@@ -55,16 +55,19 @@ public class PingServiceImpl implements PingService{
 		 * 返回Pong
 		 * 格式为:
 		 * 		Pong+空格+result=json字符串
-		 * 
-		 * 
-		 * Pong result={
-		 * 		"rule":{
-		 * 			"hostlist":[{"ap_id":1,"down":1234,"enable":0,"id":0,"ip":"12.1.1.2","netmask":"","up":0},{"ap_id":1,"down":1234,"enable":0,"id":0,"ip":"12.1.1.2","netmask":"","up":0}],
-		 * 			"ipwhite":[{"enable":1,"id":145,"ip":"","netmask":"255.255.255.255"},{"enable":1,"id":145,"ip":"","netmask":"255.255.255.255"}]}
-		 * }
-		 * json字符串的完整格式请参见wifidog官方文档
 		 */
 		return pongStr;
+	}
+	
+	/**
+	 * 原版wifidog
+	 */
+	@Override
+	public String getPongStr4Origin() {
+		/**
+		 * 返回Pong
+		 */
+		return "Pong";
 	}
 
 }

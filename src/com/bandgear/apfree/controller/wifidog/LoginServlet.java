@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * login接口调用该servlet
+ * 在用户第一次打开网页时
  * @author hill
  *
  */
@@ -19,6 +20,22 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("login接口被调用了");
 		System.out.println(request.getRequestURL().toString()+"?"+request.getQueryString());
+		
+		/**
+		 * 根据dev_id的有无判断是否是官方版wifidog
+		 * 有dev_id  是官方版wifidog
+		 * 没有dev_id  是apfree版wifidog
+		 */
+		//1.如果没有dev_id，认为是官方版wifidog
+		System.out.println(request.getParameter("dev_id"));
+		if(request.getParameter("dev_id")==null){
+			/**
+			 * 跳转到用户登录认证页面
+			 */
+			request.getRequestDispatcher("/WEB-INF/jsp/login4origin.jsp").forward(request, response);
+			return;
+		}
+		//2.apfree版wifidog
 		HttpSession session = request.getSession();
 		LonginParam param=new LonginParam();
 		String method = request.getMethod();

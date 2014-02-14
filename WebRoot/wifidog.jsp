@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   -----------------------auth接口-------------------------------------<br>
   		<form name='formAuth' action="<%=basePath%>wifidog/auth/" method="get">
 			<br>
-			dev_license:<input type="text" name="dev_license" value="devlicense123456" /> <br>
+			dev_id:<input type="text" name="dev_id" value="" /> <br>
 			run_mode:<input type="text" name="run_mode" value="runmode4asd" /> <br>
 			wifidog_uptime:<input type="text" name="wifidog_uptime" value="wifidoguptime" /> <br>
 			<input type="submit" value="确定"/>
@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   -----------------------login接口-------------------------------------<br>
   		<form name='formLogin' action="<%=basePath%>wifidog/login/" method="get">
 			<br>
+			dev_id:<input type="text" name="dev_id" value="" /> <br>
 			gw_address:<input type="text" name="gw_address" value="gwaddress" /> <br>
 			gw_port:<input type="text" name="gw_port" value="gwport" /> <br>
 			gw_id:<input type="text" name="gw_id" value="gwid" /> <br>
@@ -53,6 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<form name='formPortal' action="<%=basePath%>wifidog/portal/" method="get">
 			<br>
 			gw_id:<input type="text" name="gw_id" value="gwid" /> <br>
+			dev_id:<input type="text" name="dev_id" value="dev_id" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
 

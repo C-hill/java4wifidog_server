@@ -16,7 +16,7 @@ import com.bandgear.apfree.service.impl.ApServiceImpl;
 import com.bandgear.apfree.service.impl.DeviceServiceImpl;
 /**
  * auth接口调用该servlet
- * 该接口每隔一段时间调用一次
+ * 该接口在用户认证后每隔一段时间调用一次
  * @author hill
  *
  */
@@ -25,17 +25,20 @@ public class AuthServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("auth接口被调用了");
 		/**
-		 * 1.ip
-		 * 2. mac
-		 * 3. token（login页面下发的token）
-		 * 4.incoming 下载流量
-		 * 5.outgoing 上传流量 
-		 * 6.stage  认证阶段，就两种 login 和 counters
-		 * 7.dev_id 设备id，45位字符串（用来区分不同的设备）
-		 * 8.uprate 该客户端该时刻即时上行速率，单位  bps
-		 * 9.downrate 该客户端该时刻即时下行速率，单位  bps
+		 * 根据dev_id的有无判断是否是官方版wifidog
+		 * 有dev_id  是官方版wifidog
+		 * 没有dev_id  是apfree版wifidog
 		 */
+		//1.如果没有dev_id，认为是原版wifidog
+		if(request.getParameter("dev_id")==null){
+			//可根据自己的业务需求决定在何种条件下放行
+			response.getOutputStream().write("Auth: 1".getBytes());
+			return;
+		}
+		//2.apfree版wifidog
+		//2.1增加device
 		Device d=new Device();
 		d.setDownrate(Integer.parseInt(request.getParameter("downrate")));
 		d.setUprate(Integer.parseInt(request.getParameter("uprate")));
@@ -49,6 +52,7 @@ public class AuthServlet extends HttpServlet {
 		String dev_id=request.getParameter("dev_id");
 		String gw_id=request.getParameter("gw_id");
 		ds.addByDevId(d,dev_id);
+		//2.2放行或者拒绝
 		/**
 		 * 0 - 拒绝
 		 * 1 - 放行
@@ -56,7 +60,6 @@ public class AuthServlet extends HttpServlet {
 		System.out.println(request.getQueryString());
 		ServletOutputStream os = response.getOutputStream();
 		os.write("Auth: 1".getBytes());
-		System.out.println("auth接口被调用了");
 	}
 	public AuthServlet() {
 		super();

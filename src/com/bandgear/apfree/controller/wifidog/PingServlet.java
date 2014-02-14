@@ -45,11 +45,24 @@ public class PingServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("ping接口被调用了");
 		System.out.println(req.getRequestURL().toString()+"?"+req.getQueryString());
+		/**
+		 * 根据dev_id的有无判断是否是官方版wifidog
+		 * 有dev_id  是官方版wifidog
+		 * 没有dev_id  是apfree版wifidog
+		 */
+		//1.如果没有dev_id，认为是官方版wifidog
+		if(req.getParameter("dev_id")==null){
+			String pongStr4Origin = ps.getPongStr4Origin();
+			resp.getOutputStream().write(pongStr4Origin.getBytes());
+			return;
+		}
+		//2.apfree版wifidog
+		//2.1 增加ap到数据库
 		Ap ap=new Ap();
 		ap.setDev_id(req.getParameter("dev_id"));
 		ap.setGw_id(req.getParameter("gw_id"));
 		as.add(ap);
-		//1.把传过来的数据添加打数据库
+		//2.2增加router到数据库
 		Router r=new Router();
 		r.setSys_uptime(Integer.parseInt(req.getParameter("sys_uptime")));
 		r.setSys_memfree(Integer.parseInt(req.getParameter("sys_memfree")));
@@ -61,7 +74,7 @@ public class PingServlet extends HttpServlet {
 		String dev_id = req.getParameter("dev_id");
 		s.addByDevId(r,dev_id);
 		
-		//2.响应
+		//2.3响应
 		String pongStr = ps.getPongStr(dev_id);
 		resp.getOutputStream().write(pongStr.getBytes());
 	}

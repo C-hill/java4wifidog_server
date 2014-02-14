@@ -23,7 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  apfree版wifidog认证服务器相关接口测试<hr>
     <a href="<%=basePath%>wifidog.jsp">wifidog接口</a><br><br>
+    <br>
     <a href="<%=basePath%>router.jsp">router接口</a><br><br>
     <a href="<%=basePath%>device.jsp">device接口</a><br><br>
     <a href="<%=basePath%>user.jsp">user接口</a><br><br>
