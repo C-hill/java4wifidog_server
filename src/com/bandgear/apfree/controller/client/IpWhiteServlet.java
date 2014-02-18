@@ -11,7 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.bandgear.apfree.bean.IPWhite;
 import com.bandgear.apfree.service.IpWhiteService;
 import com.bandgear.apfree.service.impl.IpWhiteServiceImpl;
-
+/**
+ * for http://ip/api/client_op/ipwhite/(kind)
+ * kind: add  delete 
+ * @author hill
+ *
+ */
 public class IpWhiteServlet extends HttpServlet {
 	IpWhiteService s=new IpWhiteServiceImpl();
 	@Override
@@ -27,15 +32,20 @@ public class IpWhiteServlet extends HttpServlet {
 		String opertion=split[1];
 		IPWhite ipwhite=new IPWhite();
 		if(opertion.equals("add")){//增加
+			System.out.println("ipwhite 接口被调用了");
 			ipwhite.setIp(req.getParameter("ip")); 
 			ipwhite.setNetmask(req.getParameter("netmask"));
 			
 			respJson=s.addIpWhite(ipwhite,device_token);
-		}else if(opertion.equals("delete")){//删除
+		}else if(opertion.equals("delete")){//删除  清空
+			System.out.println("ipwhite delete接口被调用了");
 			String id=req.getParameter("id");
-			ipwhite.setId(Integer.parseInt(id));
-			
-			respJson=s.deleteIpWhite(ipwhite,device_token);
+			if("all".equals(id)){
+				respJson=s.clearByDeviceToken(device_token);
+			}else{
+				ipwhite.setId(Integer.parseInt(id));
+				respJson=s.deleteIpWhite(ipwhite,device_token);
+			}
 		}else{//获取所有host
 			respJson=s.getIpWhites(device_token);
 		}

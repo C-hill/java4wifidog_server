@@ -22,16 +22,16 @@ public class UserDao implements Dao<User>{
 	 * 增加用户
 	 */
 	@Override
-	public void add(User t) throws SQLException {
+	public int add(User t) throws SQLException {
 		Object[] params=new Object[]{t.getUsername(),t.getPassword(),t.getEnable(),t.getAp_id()};
-		qr.update("insert into ap_user(username,password,enable,ap_id) values(?,?,?,?)", params);
+		return qr.update("insert into ap_user(username,password,enable,ap_id) values(?,?,?,?)", params);
 	}
 	/**
 	 * 根据id删除用户
 	 */
 	@Override
-	public void delete(User t) throws SQLException {
-		qr.update("delete from ap_user where id=?", t.getId());
+	public int delete(User t) throws SQLException {
+		return qr.update("delete from ap_user where id=?", t.getId());
 	}
 	/**
 	 * 获取所有的用户
@@ -44,8 +44,8 @@ public class UserDao implements Dao<User>{
 	 * 修改用户
 	 */
 	@Override
-	public void update(User t) throws SQLException {
-		qr.update("update ap_user set username=?,password=? where id=?", 
+	public int update(User t) throws SQLException {
+		return qr.update("update ap_user set username=?,password=? where id=?", 
 				new Object[]{t.getUsername(),t.getPassword(),t.getId()});
 	}
 	

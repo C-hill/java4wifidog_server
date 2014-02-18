@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.bandgear.apfree.bean.MacWhite;
 import com.bandgear.apfree.service.MacWhiteService;
 import com.bandgear.apfree.service.impl.MacWhiteServiceImpl;
-
+/**
+ * for http://ip/api/client_op/macwhite/(kind)
+ * @author hill
+ *
+ */
 public class MacWhiteServlet extends HttpServlet {
 	MacWhiteService s=new MacWhiteServiceImpl();
 	@Override
@@ -27,14 +31,20 @@ public class MacWhiteServlet extends HttpServlet {
 		String opertion=split[1];
 		MacWhite macWhite=new MacWhite();
 		if(opertion.equals("add")){//增加
-			macWhite.setMac(req.getParameter("mac")); 
-			
-			respJson=s.addMacWhite(macWhite,device_token);
+			System.out.println("macwhite add接口被调用了");
+			String mac=req.getParameter("mac");
+			if("all".equals(mac)){
+				respJson=s.clearByDeviceToken(device_token);
+			}else{
+				macWhite.setMac(req.getParameter("mac")); 
+				respJson=s.addMacWhite(macWhite,device_token);
+			}
 		}else if(opertion.equals("delete")){//删除
+			System.out.println("macwhite delete接口被调用了");
 			macWhite.setMac(req.getParameter("mac"));
 			
 			respJson=s.deleteMacWhite(macWhite,device_token);
-		}else{//获取所有host
+		}else{//获取所有
 			respJson=s.getMacWhites(device_token);
 		}
 		System.out.println(opertion);

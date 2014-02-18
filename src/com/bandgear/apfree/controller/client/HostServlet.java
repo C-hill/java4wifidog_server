@@ -12,7 +12,11 @@ import com.bandgear.apfree.bean.Host;
 import com.bandgear.apfree.bean.User;
 import com.bandgear.apfree.service.HostService;
 import com.bandgear.apfree.service.impl.HostServiceImpl;
-
+/**
+ * for http://ip/api/client_op/host/(kind)
+ * @author hill
+ *
+ */
 public class HostServlet extends HttpServlet {
 	HostService s=new HostServiceImpl();
 	@Override
@@ -28,6 +32,7 @@ public class HostServlet extends HttpServlet {
 		String opertion=split[1];
 		Host host=new Host();
 		if(opertion.equals("add")){//增加
+			System.out.println("user add接口被调用了");
 			host.setIp(req.getParameter("ip")); 
 			host.setNetmask(req.getParameter("netmask"));
 			host.setUp(Integer.parseInt(req.getParameter("up")));
@@ -35,11 +40,16 @@ public class HostServlet extends HttpServlet {
 			
 			respJson=s.addHost(host,device_token);
 		}else if(opertion.equals("delete")){//删除
+			System.out.println("user delete接口被调用了");
 			String id=req.getParameter("id");
-			host.setId(Integer.parseInt(id));
-			
-			respJson=s.deleteHost(host,device_token);
+			if("all".equals(id)){
+				respJson=s.clearByDeviceToken(device_token);
+			}else{
+				host.setId(Integer.parseInt(id));
+				respJson=s.deleteHost(host,device_token);
+			}
 		}else if(opertion.equals("modify")){//修改
+			System.out.println("user modify接口被调用了");
 			host.setId(Integer.parseInt(req.getParameter("id")));
 			host.setIp(req.getParameter("ip")); 
 			host.setNetmask(req.getParameter("netmask"));

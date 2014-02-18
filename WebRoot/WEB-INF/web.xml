@@ -76,6 +76,11 @@
     <servlet-name>MacWhiteServlet</servlet-name>
     <servlet-class>com.bandgear.apfree.controller.client.MacWhiteServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>OpServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.client.OpServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -155,6 +160,10 @@
     <url-pattern>/api/client_op/macwhite/get</url-pattern>
     <url-pattern>/api/client_op/macwhite/add</url-pattern>
     <url-pattern>/api/client_op/macwhite/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OpServlet</servlet-name>
+    <url-pattern>/api/client_op/get_all</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

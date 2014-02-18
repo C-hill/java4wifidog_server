@@ -18,14 +18,14 @@ public class ApDao implements Dao<Ap> {
 		}
 	}
 	@Override
-	public void add(Ap t) throws SQLException {
-		qr.update("insert into ap(gw_id,dev_id,dev_md5,name,remark,enable) values(?,?,?,?,?,?)", 
+	public int add(Ap t) throws SQLException {
+		return qr.update("insert into ap(gw_id,dev_id,dev_md5,name,remark,enable) values(?,?,?,?,?,?)", 
 				new Object[]{t.getGw_id(),t.getDev_id(),t.getDev_md5(),t.getName(),t.getRemark(),t.getEnable()});
 	}
 
 	@Override
-	public void delete(Ap t) throws SQLException {
-		
+	public int delete(Ap t) throws SQLException {
+		return 0;
 	}
 
 	@Override
@@ -34,9 +34,8 @@ public class ApDao implements Dao<Ap> {
 	}
 
 	@Override
-	public void update(Ap t) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public int update(Ap t) throws SQLException {
+		return 0;
 	}
 	
 	/**

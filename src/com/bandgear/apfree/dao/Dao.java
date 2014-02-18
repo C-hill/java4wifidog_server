@@ -13,7 +13,7 @@ import com.bandgear.apfree.bean.Host;
  */
 public interface  Dao<T>{
 	List<T> find() throws SQLException;//获取
-	void add(T t) throws SQLException;//增加
-	void delete(T t) throws SQLException;//删除
-	void update(T t) throws SQLException;//更新
+	int add(T t) throws SQLException;//增加
+	int delete(T t) throws SQLException;//删除
+	int update(T t) throws SQLException;//更新
 }

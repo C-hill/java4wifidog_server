@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.bandgear.apfree.bean.User;
 import com.bandgear.apfree.service.UserService;
 import com.bandgear.apfree.service.impl.UserServiceImpl;
-
+/**
+ * for http://ip/api/wifidog_user/(kind)
+ * @author hill
+ *
+ */
 public class UserServlet extends HttpServlet {
 	private UserService us=new UserServiceImpl();
 	public UserServlet() {

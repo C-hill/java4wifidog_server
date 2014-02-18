@@ -22,16 +22,16 @@ public class MacWhiteDao implements Dao<MacWhite>{
 	 * 增加macwhite
 	 */
 	@Override
-	public void add(MacWhite t) throws SQLException {
-		qr.update("insert into rule_macwhite(ap_id,mac,enable) values(?,?,?)", new Object[]{t.getAp_id(),t.getMac(),t.getEnable()+""});
+	public int add(MacWhite t) throws SQLException {
+		return qr.update("insert into rule_macwhite(ap_id,mac,enable) values(?,?,?)", new Object[]{t.getAp_id(),t.getMac(),t.getEnable()+""});
 	}
 
 	/**
 	 * 删除macwhite（根据mac）
 	 */
 	@Override
-	public void delete(MacWhite t) throws SQLException {
-		qr.update("delete from rule_macwhite where mac=?", t.getMac());
+	public int delete(MacWhite t) throws SQLException {
+		return qr.update("delete from rule_macwhite where mac=?", t.getMac());
 	}
 	
 	/**
@@ -43,9 +43,8 @@ public class MacWhiteDao implements Dao<MacWhite>{
 	}
 
 	@Override
-	public void update(MacWhite t) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public int update(MacWhite t) throws SQLException {
+		return 0;
 	}
 	/**
 	 * 通过device_token删除对应的macwhite
@@ -61,5 +60,8 @@ public class MacWhiteDao implements Dao<MacWhite>{
 	public List<MacWhite> findByDeviceToken(String device_token) throws SQLException{
 		return qr.query("select * from rule_macwhite where ap_id =(select ap_id from ap where dev_md5=?)", 
 				new BeanListHandler(MacWhite.class), new Object[]{device_token});
+	}
+	public int deleteByDeviceToken(String deviceToken) throws SQLException {
+		return qr.update("delete from rule_macwhite where ap_id=(select ap_id from ap where dev_md5=?)", deviceToken);
 	}
 }

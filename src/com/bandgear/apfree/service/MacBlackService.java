@@ -10,4 +10,6 @@ public interface MacBlackService {
 
 	String getMacBlacks(String deviceToken);
 
+	String clearByDeviceToken(String deviceToken);
+
 }

@@ -3,6 +3,7 @@ package com.bandgear.apfree.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
@@ -50,7 +51,10 @@ public class UserServiceImpl implements UserService{
 				return resultObj.toString();
 			}
 			List<User> users = ((UserDao)ud).findByDeviceToken(deviceToken);
-			resultObj.put("result", users);
+			JSONArray jsonArray=new JSONArray();
+			jsonArray.add(users);
+			
+			resultObj.put("result", jsonArray);
 			resultObj.put("code", "1");
 			resultObj.put("message", "success!");
 			return resultObj.toString();

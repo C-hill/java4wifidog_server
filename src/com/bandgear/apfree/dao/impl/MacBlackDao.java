@@ -24,16 +24,16 @@ public class MacBlackDao implements Dao<MacBlack>{
 	 * 增加macblack
 	 */
 	@Override
-	public void add(MacBlack t) throws SQLException {
-		qr.update("insert into rule_macblack(ap_id,mac,enable) values(?,?,?)", new Object[]{t.getAp_id(),t.getMac(),t.getEnable()+""});
+	public int add(MacBlack t) throws SQLException {
+		return qr.update("insert into rule_macblack(ap_id,mac,enable) values(?,?,?)", new Object[]{t.getAp_id(),t.getMac(),t.getEnable()+""});
 	}
 
 	/**
 	 * 删除macblack（通过mac）
 	 */
 	@Override
-	public void delete(MacBlack t) throws SQLException {
-		qr.update("delete from rule_macblack where mac=?", t.getMac());
+	public int delete(MacBlack t) throws SQLException {
+		return qr.update("delete from rule_macblack where mac=?", t.getMac());
 		
 	}
 
@@ -46,9 +46,8 @@ public class MacBlackDao implements Dao<MacBlack>{
 	}
 
 	@Override
-	public void update(MacBlack t) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public int update(MacBlack t) throws SQLException {
+		return 0;
 	}
 	
 	/**
@@ -77,5 +76,8 @@ public class MacBlackDao implements Dao<MacBlack>{
 	public List<MacBlack> findByDevId(String devId) throws SQLException {
 		return qr.query("select * from rule_macblack where ap_id =(select ap_id from ap where dev_id=?)", 
 				new BeanListHandler(Host.class), new Object[]{devId});
+	}
+	public int deleteByDeviceToken(String deviceToken) throws SQLException {
+		return qr.update("delete from rule_macblack where ap_id=(select ap_id from ap where dev_md5=?)", deviceToken);
 	}
 }

@@ -27,6 +27,9 @@ public class RouterServiceImpl implements RouterService{
 			}
 			//2.合法的话，返回结果中有result
 			List<Router> findByDeviceToken = rd.findByDeviceToken(deviceToken);
+			for(Router r:findByDeviceToken){
+				r.setOnline(1);
+			}
 			resultObj.put("result", findByDeviceToken);
 			resultObj.put("code", "1");
 			resultObj.put("message", "success!");

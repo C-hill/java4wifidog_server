@@ -17,14 +17,14 @@ public class RouterDao implements Dao<Router>{
 		qr=new QueryRunner(Utils4DB.getDataSource());
 	}
 	@Override
-	public void add(Router t) throws SQLException {
-		qr.update("insert into ap_status(sys_uptime,sys_memfree,sys_load,wifidog_uptime,update_time,cpu_usage,nf_conntrack_num) values(?,?,?,?,?,?,?)", 
+	public int add(Router t) throws SQLException {
+		return qr.update("insert into ap_status(sys_uptime,sys_memfree,sys_load,wifidog_uptime,update_time,cpu_usage,nf_conntrack_num) values(?,?,?,?,?,?,?)", 
 				new Object[]{t.getSys_uptime(),t.getSys_memfree(),t.getSys_load(),t.getWifidog_uptime(),t.getUpdate_time(),t.getCpu_usage(),t.getNf_conntrack_num()});
 	}
 
 	@Override
-	public void delete(Router t) {
-		
+	public int delete(Router t) {
+		return 0;
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class RouterDao implements Dao<Router>{
 	}
 
 	@Override
-	public void update(Router t) throws SQLException {
-		
+	public int update(Router t) throws SQLException {
+		return 0;
 	}
 	/**
 	 * 根据ap_id获取router

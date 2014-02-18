@@ -12,4 +12,6 @@ public interface HostService {
 
 	String getHosts(String deviceToken);
 
+	String clearByDeviceToken(String deviceToken);
+
 }

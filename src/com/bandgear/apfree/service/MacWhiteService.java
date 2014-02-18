@@ -10,4 +10,6 @@ public interface MacWhiteService {
 
 	String getMacWhites(String deviceToken);
 
+	String clearByDeviceToken(String deviceToken);
+
 }

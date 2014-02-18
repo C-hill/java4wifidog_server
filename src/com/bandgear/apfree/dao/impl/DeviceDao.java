@@ -21,16 +21,15 @@ public class DeviceDao implements Dao<Device>{
 	}
 	
 	@Override
-	public void add(Device t) throws SQLException {
-		qr.update("insert into client(ap_id,kind,ip,mac,token,outgoing,incoming,uprate,downrate,status,login_count,update_time,login_time) values(?,?,?,?,?,?,?,?,?,?,?,?,?)", 
+	public int add(Device t) throws SQLException {
+		return qr.update("insert into client(ap_id,kind,ip,mac,token,outgoing,incoming,uprate,downrate,status,login_count,update_time,login_time) values(?,?,?,?,?,?,?,?,?,?,?,?,?)", 
 				new Object[]{t.getAp_id(),t.getKind(),t.getIp(),t.getMac(),t.getToken(),t.getOutgoing(),t.getIncoming(),
 				t.getUprate(),t.getDownrate(),t.getStatus(),t.getLogin_count(),t.getUpdate_time(),t.getLogin_time()});
 	}
 	
 	@Override
-	public void delete(Device t) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public int delete(Device t) throws SQLException {
+		return 0;
 	}
 	/**
 	 * 获取所有device
@@ -41,9 +40,8 @@ public class DeviceDao implements Dao<Device>{
 	}
 	
 	@Override
-	public void update(Device t) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public int update(Device t) throws SQLException {
+		return 0;
 	}
 	/**
 	 * 通过device_token获取device

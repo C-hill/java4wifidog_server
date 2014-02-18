@@ -23,16 +23,16 @@ public class IPWhiteDao implements Dao<IPWhite>{
 	 * 增加ipwhite
 	 */
 	@Override
-	public void add(IPWhite t) throws SQLException {
-		qr.update("insert into rule_ipwhite(ap_id,ip ,netmask,enable) values(?,?,?,?)", new Object[]{t.getAp_id(),t.getIp(),t.getNetmask(),t.getEnable()+""});
+	public int add(IPWhite t) throws SQLException {
+		return qr.update("insert into rule_ipwhite(ap_id,ip ,netmask,enable) values(?,?,?,?)", new Object[]{t.getAp_id(),t.getIp(),t.getNetmask(),t.getEnable()+""});
 	}
 
 	/**
 	 * 删除ipwhite（通过id）
 	 */
 	@Override
-	public void delete(IPWhite t) throws SQLException {
-		qr.update("delete from rule_ipwhite where id=?", t.getId());
+	public int delete(IPWhite t) throws SQLException {
+		return qr.update("delete from rule_ipwhite where id=?", t.getId());
 	}
 
 	/**
@@ -44,8 +44,8 @@ public class IPWhiteDao implements Dao<IPWhite>{
 	}
 
 	@Override
-	public void update(IPWhite t) throws SQLException {
-		
+	public int update(IPWhite t) throws SQLException {
+		return 0;
 	}
 	
 	/**
@@ -61,8 +61,8 @@ public class IPWhiteDao implements Dao<IPWhite>{
 	 * 通过device_token删除对应的ipwhite
 	 * @throws SQLException 
 	 */
-	public void delByDeviceToken(String device_token) throws SQLException{
-		qr.update("delete from rule_ipwhite where ap_id=(select ap_id from ap where dev_md5=?)", device_token);
+	public int delByDeviceToken(String device_token) throws SQLException{
+		return qr.update("delete from rule_ipwhite where ap_id=(select ap_id from ap where dev_md5=?)", device_token);
 	}
 
 	/**
@@ -74,5 +74,9 @@ public class IPWhiteDao implements Dao<IPWhite>{
 	public List<IPWhite> findByDevId(String devId) throws SQLException {
 		return qr.query("select * from rule_ipwhite where ap_id =(select ap_id from ap where dev_id=?)", 
 				new BeanListHandler(Host.class), new Object[]{devId});
+	}
+
+	public int deleteByDeviceToken(String deviceToken) throws SQLException {
+		return qr.update("delete from rule_ipwhite where ap_id=(select ap_id from ap where dev_md5=?)", deviceToken);
 	}
 }

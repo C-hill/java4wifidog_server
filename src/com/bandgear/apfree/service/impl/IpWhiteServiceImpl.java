@@ -86,5 +86,25 @@ public class IpWhiteServiceImpl implements IpWhiteService {
 			return resultObj.toString();
 		}
 	}
+	@Override
+	public String clearByDeviceToken(String deviceToken) {
+		JSONObject resultObj=new JSONObject();
+		try {
+			if(Utils4Service.checkDeviceToken(deviceToken)!=1){//判断device_token是否合法
+				resultObj.put("code", "0");
+				resultObj.put("message", "device_token is invalid!");
+				return resultObj.toString();
+			}
+			((IPWhiteDao)d).deleteByDeviceToken(deviceToken);
+			resultObj.put("code", "1");
+			resultObj.put("message", "success!");
+			return resultObj.toString();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resultObj.put("code", "0");
+			resultObj.put("message", "error!");
+			return resultObj.toString();
+		}
+	}
 
 }

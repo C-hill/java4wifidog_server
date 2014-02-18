@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.bandgear.apfree.bean.MacBlack;
 import com.bandgear.apfree.service.MacBlackService;
 import com.bandgear.apfree.service.impl.MacBlackServiceImpl;
-
+/**
+ * for http://ip/api/client_op/macblack/(kind)
+ * @author hill
+ *
+ */
 public class MacBlackServlet extends HttpServlet {
 	MacBlackService s=new MacBlackServiceImpl();
 	@Override
@@ -27,14 +31,20 @@ public class MacBlackServlet extends HttpServlet {
 		String opertion=split[1];
 		MacBlack macBlack=new MacBlack();
 		if(opertion.equals("add")){//增加
+			System.out.println("macblack add接口被调用了");
 			macBlack.setMac(req.getParameter("mac")); 
 			
 			respJson=s.addMacBlack(macBlack,device_token);
 		}else if(opertion.equals("delete")){//删除
-			macBlack.setMac(req.getParameter("mac"));
-			
-			respJson=s.deleteMacBlack(macBlack,device_token);
-		}else{//获取所有host
+			System.out.println("macbalck delete接口被调用了");
+			String mac=req.getParameter("mac");
+			if("all".equals(mac)){
+				respJson=s.clearByDeviceToken(device_token);
+			}else{
+				macBlack.setMac(req.getParameter("mac"));
+				respJson=s.deleteMacBlack(macBlack,device_token);
+			}
+		}else{//获取所有macblack
 			respJson=s.getMacBlacks(device_token);
 		}
 		System.out.println(opertion);

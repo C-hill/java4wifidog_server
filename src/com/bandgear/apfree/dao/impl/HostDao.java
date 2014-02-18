@@ -23,8 +23,8 @@ public class HostDao implements Dao<Host>{
 	 * 增加host
 	 */
 	@Override
-	public void add(Host t) throws SQLException {
-		qr.update("insert into rule_host(ap_id,ip ,netmask ,up ,down,session,enable) values(?,?,?,?,?,?,?)", 
+	public int add(Host t) throws SQLException {
+		return qr.update("insert into rule_host(ap_id,ip ,netmask ,up ,down,session,enable) values(?,?,?,?,?,?,?)", 
 				new Object[]{t.getAp_id(),t.getIp(),t.getNetmask(),t.getUp(),t.getDown(),t.getSession(),t.getEnable()+""});
 	}
 	
@@ -33,8 +33,8 @@ public class HostDao implements Dao<Host>{
 	 * @throws SQLException 
 	 */
 	@Override
-	public void delete(Host t) throws SQLException {
-		qr.update("delete from rule_host where id=?", t.getId());
+	public int delete(Host t) throws SQLException {
+		return qr.update("delete from rule_host where id=?", t.getId());
 	}
 	
 	/**
@@ -49,8 +49,8 @@ public class HostDao implements Dao<Host>{
 	 * 修改host
 	 */
 	@Override
-	public void update(Host t) throws SQLException {
-		qr.update("update rule_host set ip=?, netmask=?, up=? ,down=?,session=? ,enable=?  where id=?", 
+	public int update(Host t) throws SQLException {
+		return qr.update("update rule_host set ip=?, netmask=?, up=? ,down=?,session=? ,enable=?  where id=?", 
 				new Object[]{t.getIp(),t.getNetmask(),t.getUp(),t.getDown(),t.getSession(),t.getEnable()+"",t.getId()});
 	}
 	
@@ -72,5 +72,9 @@ public class HostDao implements Dao<Host>{
 	public List<Host> findByDevId(String devId) throws SQLException {
 		return qr.query("select * from rule_host where ap_id =(select ap_id from ap where dev_id=?)", 
 				new BeanListHandler(Host.class), new Object[]{devId});
+	}
+
+	public int deleteByDeviceToken(String deviceToken) throws SQLException {
+		return qr.update("delete from rule_host where ap_id=(select ap_id from ap where dev_md5=?)", deviceToken);
 	}
 }

@@ -10,4 +10,6 @@ public interface IpWhiteService {
 
 	String getIpWhites(String deviceToken);
 
+	String clearByDeviceToken(String deviceToken);
+
 }
