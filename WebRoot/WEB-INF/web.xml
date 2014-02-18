@@ -4,11 +4,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<!--*******************************filter*******************************-->
 <!--过滤器-->
 	<filter>
 		<filter-name>url</filter-name>
 		<filter-class>com.bandgear.apfree.filter.URLFilter</filter-class>
 	</filter>
+<!--*******************************servlet*******************************-->
 <!--  初始化-->
   <servlet>
     <servlet-name>InitServlet</servlet-name>
@@ -81,16 +83,9 @@
     <servlet-class>com.bandgear.apfree.controller.client.OpServlet</servlet-class>
   </servlet>
 
-
-
-
-
-
-
-
   
   
-  
+<!--*****************************mapping*******************************-->  
 	<filter-mapping>
 		<filter-name>url</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -165,6 +160,7 @@
     <servlet-name>OpServlet</servlet-name>
     <url-pattern>/api/client_op/get_all</url-pattern>
   </servlet-mapping>
+  
   
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
