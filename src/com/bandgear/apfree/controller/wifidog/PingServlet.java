@@ -30,6 +30,7 @@ import com.bandgear.apfree.service.impl.ApServiceImpl;
 import com.bandgear.apfree.service.impl.PingServiceImpl;
 import com.bandgear.apfree.service.impl.RouterServiceImpl;
 import com.bandgear.apfree.utils.Utils4DB;
+import com.bandgear.apfree.utils.Utils4Wifidog;
 
 /**
  * ping接口调用该servlet
@@ -44,7 +45,7 @@ public class PingServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("ping接口被调用了");
-		System.out.println(req.getRequestURL().toString()+"?"+req.getQueryString());
+//		System.out.println(req.getRequestURL().toString()+"?"+req.getQueryString());
 		/**
 		 * 根据dev_id的有无判断是否是官方版wifidog
 		 * 有dev_id  是官方版wifidog
@@ -57,12 +58,17 @@ public class PingServlet extends HttpServlet {
 			return;
 		}
 		//2.apfree版wifidog
-		//2.1 增加ap到数据库
+		//2.1检查user_agent是否合法,不合法return
+		if(!Utils4Wifidog.checkUserAgent(req.getHeader("user-agent"))){
+			System.out.println("非法user_agent");
+			return;
+		}
+		//2.2增加ap到数据库
 		Ap ap=new Ap();
 		ap.setDev_id(req.getParameter("dev_id"));
 		ap.setGw_id(req.getParameter("gw_id"));
 		as.add(ap);
-		//2.2增加router到数据库
+		//2.3增加router到数据库
 		Router r=new Router();
 		r.setSys_uptime(Integer.parseInt(req.getParameter("sys_uptime")));
 		r.setSys_memfree(Integer.parseInt(req.getParameter("sys_memfree")));
@@ -74,7 +80,7 @@ public class PingServlet extends HttpServlet {
 		String dev_id = req.getParameter("dev_id");
 		s.addByDevId(r,dev_id);
 		
-		//2.3响应
+		//2.4响应
 		String pongStr = ps.getPongStr(dev_id);
 		resp.getOutputStream().write(pongStr.getBytes());
 	}

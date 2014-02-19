@@ -17,21 +17,17 @@ public class URLFilter implements Filter {
 	public void destroy() {
 	}
 
-	public void doFilter(ServletRequest arg0, ServletResponse arg1,
-			FilterChain arg2) throws IOException, ServletException {
-		HttpServletRequest request=(HttpServletRequest) arg0;
-		HttpServletResponse response=(HttpServletResponse) arg1;
+	public void doFilter(ServletRequest req, ServletResponse resp,
+			FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest request=(HttpServletRequest) req;
+		HttpServletResponse response=(HttpServletResponse) resp;
 		
 		String header = request.getHeader("Referer");
 		StringBuffer requestURL = request.getRequestURL();
 		String queryString = request.getQueryString();
 		String scheme = request.getScheme();
-//		System.out.println(header);
-//		System.out.println(queryString);
-//		System.out.println(requestURL.toString());
-//		System.out.println(scheme);
-//		response.getOutputStream().write("write......".getBytes());
-		arg2.doFilter(request, response);//放行
+		System.out.println("user-agent====="+request.getHeader("user-agent"));
+		chain.doFilter(request, response);//放行
 		
 	}
 

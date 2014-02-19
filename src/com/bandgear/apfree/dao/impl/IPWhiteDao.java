@@ -73,10 +73,19 @@ public class IPWhiteDao implements Dao<IPWhite>{
 	 */
 	public List<IPWhite> findByDevId(String devId) throws SQLException {
 		return qr.query("select * from rule_ipwhite where ap_id =(select ap_id from ap where dev_id=?)", 
-				new BeanListHandler(Host.class), new Object[]{devId});
+				new BeanListHandler(IPWhite.class), new Object[]{devId});
 	}
 
 	public int deleteByDeviceToken(String deviceToken) throws SQLException {
 		return qr.update("delete from rule_ipwhite where ap_id=(select ap_id from ap where dev_md5=?)", deviceToken);
+	}
+
+	public IPWhite findByDeviceTokenAndIp(String deviceToken, String ip) throws SQLException {
+		List<IPWhite> query = qr.query("select * from rule_ipwhite where ap_id =(select ap_id from ap where dev_md5=?) and ip=?", 
+				new BeanListHandler(IPWhite.class), new Object[]{deviceToken,ip});
+		if(query.size()==0){
+			return null;
+		}
+		return query.get(0);
 	}
 }

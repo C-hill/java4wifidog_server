@@ -82,7 +82,7 @@ public class DeviceDao implements Dao<Device>{
 	}
 
 	public void updateByMacAndDevId(Device t, String devId) throws SQLException {
-		qr.update("update client set ip=?,mac=?,token=?,outgoing=?,incoming=?,uprate=?,downrate=?,login_count=?,update_time=?,login_time=?", 
-				new Object[]{t.getIp(),t.getMac(),t.getToken(),t.getOutgoing(),t.getIncoming(),t.getUprate(),t.getDownrate(),t.getLogin_count(),t.getUpdate_time(),t.getLogin_time()});
+		qr.update("update client set ip=?,token=?,outgoing=?,incoming=?,uprate=?,downrate=?,login_count=?,update_time=?,login_time=? where ap_id =(select ap_id from ap where dev_id=?) and mac=?", 
+				new Object[]{t.getIp(),t.getToken(),t.getOutgoing(),t.getIncoming(),t.getUprate(),t.getDownrate(),t.getLogin_count(),t.getUpdate_time(),t.getLogin_time(),devId,t.getMac()});
 	}
 }

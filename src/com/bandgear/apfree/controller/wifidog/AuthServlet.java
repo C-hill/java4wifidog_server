@@ -14,6 +14,7 @@ import com.bandgear.apfree.service.ApService;
 import com.bandgear.apfree.service.DeviceService;
 import com.bandgear.apfree.service.impl.ApServiceImpl;
 import com.bandgear.apfree.service.impl.DeviceServiceImpl;
+import com.bandgear.apfree.utils.Utils4Wifidog;
 /**
  * auth接口调用该servlet
  * 该接口在用户认证后每隔一段时间调用一次
@@ -38,7 +39,12 @@ public class AuthServlet extends HttpServlet {
 			return;
 		}
 		//2.apfree版wifidog
-		//2.1增加device
+		//2.1检查user_agent是否合法,不合法return
+		if(!Utils4Wifidog.checkUserAgent(request.getHeader("user-agent"))){
+			System.out.println("非法user_agent");
+			return;
+		}
+		//2.2增加device
 		Device d=new Device();
 		d.setDownrate(Integer.parseInt(request.getParameter("downrate")));
 		d.setUprate(Integer.parseInt(request.getParameter("uprate")));
@@ -52,7 +58,7 @@ public class AuthServlet extends HttpServlet {
 		String dev_id=request.getParameter("dev_id");
 		String gw_id=request.getParameter("gw_id");
 		ds.addByDevId(d,dev_id);
-		//2.2放行或者拒绝
+		//2.3放行或者拒绝
 		/**
 		 * 0 - 拒绝
 		 * 1 - 放行

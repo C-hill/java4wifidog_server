@@ -1,6 +1,7 @@
 package com.bandgear.apfree.service.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,15 @@ public class DeviceServiceImpl implements DeviceService {
 			}
 			
 			List<Device> devices = ((DeviceDao)d).findByDeviceToken(deviceToken);
+			//device是否是白名单
+			for(Device d:devices){
+				if(Utils4Service.isDeviceInIpWhite(d,deviceToken)){
+					d.setIn_ipwhite(1);
+				}else{
+					d.setIn_ipwhite(0);
+				}
+			}
+			devices=Utils4Service.getOnlineDevice(devices);
 			resultObj.put("result", devices);
 			resultObj.put("code", "1");
 			resultObj.put("message", "success!");
@@ -54,7 +64,8 @@ public class DeviceServiceImpl implements DeviceService {
 			}else{
 				//2.2.1如果token相同，是同一次登录，login_count不改变
 				if(findByMacAndDevId.getToken().equals(device.getToken())){
-					device.setLogin_count(findByMacAndDevId.getLogin_count()+1);
+					device.setLogin_count(findByMacAndDevId.getLogin_count());
+					device.setLogin_time(findByMacAndDevId.getLogin_time());
 				//2.2.2如果token不相同，则是新的一次登录，login_count加一次
 				}else{
 					device.setLogin_count(findByMacAndDevId.getLogin_count()+1);

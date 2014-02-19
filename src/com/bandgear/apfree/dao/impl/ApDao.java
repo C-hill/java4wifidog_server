@@ -50,5 +50,17 @@ public class ApDao implements Dao<Ap> {
 		}
 		return query.get(0);
 	}
-
+	/**
+	 *通过device_token获取ap 
+	 * @param device_token
+	 * @throws SQLException 
+	 */
+	public Ap findByDeviceToken(String device_token) throws SQLException {
+		List<Ap> query = qr.query("select * from ap where dev_md5=?", new BeanListHandler(Ap.class), device_token);
+		if(query.size()==0){
+			return null;
+		}
+		return query.get(0);
+	}
+	
 }

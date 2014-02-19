@@ -75,7 +75,7 @@ public class MacBlackDao implements Dao<MacBlack>{
 	 */
 	public List<MacBlack> findByDevId(String devId) throws SQLException {
 		return qr.query("select * from rule_macblack where ap_id =(select ap_id from ap where dev_id=?)", 
-				new BeanListHandler(Host.class), new Object[]{devId});
+				new BeanListHandler(MacBlack.class), new Object[]{devId});
 	}
 	public int deleteByDeviceToken(String deviceToken) throws SQLException {
 		return qr.update("delete from rule_macblack where ap_id=(select ap_id from ap where dev_md5=?)", deviceToken);

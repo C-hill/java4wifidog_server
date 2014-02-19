@@ -29,6 +29,7 @@ public class RouterServiceImpl implements RouterService{
 			List<Router> findByDeviceToken = rd.findByDeviceToken(deviceToken);
 			for(Router r:findByDeviceToken){
 				r.setOnline(1);
+				r.setClient_num(Utils4Service.getOnlineDeviceNumByDeviceToken(deviceToken));
 			}
 			resultObj.put("result", findByDeviceToken);
 			resultObj.put("code", "1");
