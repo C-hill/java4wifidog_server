@@ -32,8 +32,8 @@ public class Utils4DB {
 	}
 	private static void loadProperties() throws FileNotFoundException, IOException {
 		Properties p=new Properties();
-		String filePath="C:/Users/hanyu/Documents/GitHub/WebRoot/WEB-INF/classes/db.properties";
-		p.load(new FileInputStream(new File(filePath)));
+		String filePath="/db.properties";
+		p.load(Utils4DB.class.getResourceAsStream(filePath));
 		((BasicDataSource) bds).setDriverClassName("com.mysql.jdbc.Driver");
 		((BasicDataSource) bds).setUrl(p.getProperty("url"));
 		((BasicDataSource) bds).setUsername(p.getProperty("username"));

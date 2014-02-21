@@ -24,6 +24,6 @@ public class Md5Utils {
 		} catch (Exception e) {
 		   return null;
 		}
-}
+	}
 
 }

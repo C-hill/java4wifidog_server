@@ -32,7 +32,7 @@ public class HostServlet extends HttpServlet {
 		String opertion=split[1];
 		Host host=new Host();
 		if(opertion.equals("add")){//增加
-			System.out.println("user add接口被调用了");
+			System.out.println("host add接口被调用了");
 			host.setIp(req.getParameter("ip")); 
 			host.setNetmask(req.getParameter("netmask"));
 			host.setUp(Integer.parseInt(req.getParameter("up")));
@@ -40,7 +40,7 @@ public class HostServlet extends HttpServlet {
 			
 			respJson=s.addHost(host,device_token);
 		}else if(opertion.equals("delete")){//删除
-			System.out.println("user delete接口被调用了");
+			System.out.println("host delete接口被调用了");
 			String id=req.getParameter("id");
 			if("all".equals(id)){
 				respJson=s.clearByDeviceToken(device_token);
@@ -49,7 +49,7 @@ public class HostServlet extends HttpServlet {
 				respJson=s.deleteHost(host,device_token);
 			}
 		}else if(opertion.equals("modify")){//修改
-			System.out.println("user modify接口被调用了");
+			System.out.println("host modify接口被调用了");
 			host.setId(Integer.parseInt(req.getParameter("id")));
 			host.setIp(req.getParameter("ip")); 
 			host.setNetmask(req.getParameter("netmask"));

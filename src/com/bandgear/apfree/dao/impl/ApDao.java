@@ -62,5 +62,4 @@ public class ApDao implements Dao<Ap> {
 		}
 		return query.get(0);
 	}
-	
 }
