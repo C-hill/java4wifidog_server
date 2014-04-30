@@ -193,3 +193,56 @@ CREATE TABLE `rule_wifidog` (
   `assist` char(255) DEFAULT NULL COMMENT '辅助参数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='mac白名单';
+
+--
+-- 表的结构 `user_ap2user`
+--
+DROP TABLE IF EXISTS `user_ap2user`;
+CREATE TABLE IF NOT EXISTS `user_ap2user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `ap_id` int(11) NOT NULL COMMENT '路由id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
+-- 表的结构 `user_group`
+--
+DROP TABLE IF EXISTS `user_group`;
+CREATE TABLE IF NOT EXISTS `user_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(255) COLLATE utf8_bin NOT NULL COMMENT '用户组名称',
+  `remark` char(255) COLLATE utf8_bin DEFAULT NULL COMMENT '备注',
+  `permission_id` int(11) NOT NULL COMMENT '权限id',
+  `permission` int(11) NOT NULL COMMENT '权限权重值',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
+-- 表的结构 `user_info`
+--
+DROP TABLE IF EXISTS `user_info`;
+CREATE TABLE IF NOT EXISTS `user_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `username` char(255) COLLATE utf8_bin NOT NULL COMMENT '用户名',
+  `password` char(255) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
+  `active` enum('1','0') COLLATE utf8_bin NOT NULL DEFAULT '1' COMMENT '否是启用改用户',
+  `group_id` int(11) NOT NULL COMMENT '用户组id',
+  `permission_id` int(11) NOT NULL COMMENT '权限id',
+  `last_login` datetime DEFAULT NULL COMMENT '最后一次登录时间',
+  `login_count` int(11) NOT NULL DEFAULT '0' COMMENT '登录次数',
+  `remark` char(255) COLLATE utf8_bin DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
+-- 表的结构 `user_permission`
+--
+DROP TABLE IF EXISTS `user_permission`;
+CREATE TABLE IF NOT EXISTS `user_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(255) COLLATE utf8_bin NOT NULL COMMENT '权限名称',
+  `code` char(255) COLLATE utf8_bin NOT NULL COMMENT '码中代的code',
+  `weight` int(11) NOT NULL COMMENT '权重值',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
