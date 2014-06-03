@@ -12,7 +12,7 @@ public class Ap implements Serializable{
 	private String dev_md5;//device_token，对dev_id加密所得
 	private String name;
 	private String remark;
-	private Integer enable;
+	private Integer enable=1;
 	public Integer getAp_id() {
 		return ap_id;
 	}

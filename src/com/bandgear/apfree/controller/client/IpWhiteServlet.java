@@ -52,5 +52,4 @@ public class IpWhiteServlet extends HttpServlet {
 		System.out.println(opertion);
 		resp.getOutputStream().write(respJson.getBytes());
 	}
-
 }

@@ -24,5 +24,4 @@ public class InitServlet extends HttpServlet {
 //			System.out.println("日志的配置文件读取成功");
 		}		
 	}
-
 }

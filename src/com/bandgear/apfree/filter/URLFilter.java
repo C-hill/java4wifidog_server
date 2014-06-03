@@ -26,7 +26,7 @@ public class URLFilter implements Filter {
 		StringBuffer requestURL = request.getRequestURL();
 		String queryString = request.getQueryString();
 		String scheme = request.getScheme();
-		System.out.println("user-agent====="+request.getHeader("user-agent"));
+//		System.out.println("user-agent====="+request.getHeader("user-agent"));
 		chain.doFilter(request, response);//放行
 		
 	}

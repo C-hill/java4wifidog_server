@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class MacBlack implements Serializable{
 	/**
 	 * mac黑名单，对应rule_macblack表
+	 * macblack主要实现禁止某个设备访问网络（踢下线通过该名单实现），
 	 */
 	private Integer id;
 	private String mac;

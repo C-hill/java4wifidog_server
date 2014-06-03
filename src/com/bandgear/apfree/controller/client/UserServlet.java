@@ -55,7 +55,7 @@ public class UserServlet extends HttpServlet {
 			user.setId(Integer.parseInt(id));
 			
 			respJson=us.modifyUser(user,device_token);
-		}else if(opertion.equals("active")){//激活
+		}else if(opertion.equals("active")){//激活or禁用
 			String id=req.getParameter("id");
 			user.setId(Integer.parseInt(id));
 			String enable=req.getParameter("active");

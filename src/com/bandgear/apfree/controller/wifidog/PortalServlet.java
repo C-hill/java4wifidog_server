@@ -16,7 +16,7 @@ public class PortalServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("调用了portal接口");
+		System.out.println("调用了portal接口:"+request.getRequestURL().toString()+"?"+request.getQueryString());
 		/**
 		 * 根据dev_id的有无判断是否是原版wifidog
 		 * 有dev_id  是原版wifidog
@@ -29,6 +29,6 @@ public class PortalServlet extends HttpServlet {
 		}
 		//2.apfree版wifidog
 		//用户登录成功，并且路由器放行后，重定向到某个页面
-		response.sendRedirect("http://www.baidu.com");
+		response.sendRedirect("http://www.apfree.net");
 	}
 }

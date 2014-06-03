@@ -20,7 +20,7 @@ public class ApDao implements Dao<Ap> {
 	@Override
 	public int add(Ap t) throws SQLException {
 		return qr.update("insert into ap(gw_id,dev_id,dev_md5,name,remark,enable) values(?,?,?,?,?,?)", 
-				new Object[]{t.getGw_id(),t.getDev_id(),t.getDev_md5(),t.getName(),t.getRemark(),t.getEnable()});
+				new Object[]{t.getGw_id(),t.getDev_id(),t.getDev_md5(),t.getName(),t.getRemark(),t.getEnable()+""});
 	}
 
 	@Override

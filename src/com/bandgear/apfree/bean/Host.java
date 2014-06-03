@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Host implements Serializable{
 	/**
 	 * 主机规则，对应rule_host表
+	 * host主要可以实现针对某个ip或网段的限速
 	 */
 	private Integer id;
 	private Integer ap_id;

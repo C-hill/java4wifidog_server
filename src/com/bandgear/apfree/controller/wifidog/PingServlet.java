@@ -44,8 +44,7 @@ public class PingServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("ping接口被调用了");
-//		System.out.println(req.getRequestURL().toString()+"?"+req.getQueryString());
+		System.out.println("ping接口被调用了："+req.getRequestURL().toString()+"?"+req.getQueryString());
 		/**
 		 * 根据dev_id的有无判断是否是官方版wifidog
 		 * 有dev_id  是官方版wifidog

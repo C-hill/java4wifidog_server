@@ -18,8 +18,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("login接口被调用了");
-//		System.out.println(request.getRequestURL().toString()+"?"+request.getQueryString());
+		System.out.println("login接口被调用了:"+request.getRequestURL().toString()+"?"+request.getQueryString());
 		
 		/**
 		 * 根据dev_id的有无判断是否是官方版wifidog

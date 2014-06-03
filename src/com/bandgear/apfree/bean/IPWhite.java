@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class IPWhite implements Serializable{
 	/**
 	 * ip白名单，对应rule_ipwhite表
+	 * 加入ip白名单的设备会被限速
 	 */
 	private Integer ap_id;
 	private Integer id;

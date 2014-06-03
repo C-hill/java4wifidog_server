@@ -19,10 +19,11 @@ import com.bandgear.apfree.service.impl.RouterServiceImpl;
 public class RouterServlet extends HttpServlet {
 	RouterService rs=new RouterServiceImpl();
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp)
+	protected void service(HttpServletRequest request, HttpServletResponse resp)
 			throws ServletException, IOException {
 		System.out.println("get_status接口被调用了");
-		String device_token=req.getParameter("device_token");
+		String device_token=request.getParameter("device_token");
+		System.out.println("device_token:"+device_token);
 		String respStr=rs.getStatus(device_token);
 		resp.getOutputStream().write(respStr.getBytes());
 	}

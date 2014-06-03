@@ -26,7 +26,7 @@ public class AuthServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("auth接口被调用了");
+		System.out.println("auth接口被调用了:"+request.getRequestURL().toString()+"?"+request.getQueryString());
 		/**
 		 * 根据dev_id的有无判断是否是官方版wifidog
 		 * 有dev_id  是官方版wifidog

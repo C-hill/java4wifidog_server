@@ -51,10 +51,10 @@ public class LoginValidateServlet extends HttpServlet {
 		boolean isValid=us.loginValidate(u, dev_id);
 		
 		if(isValid){//成功的话，重定向，路由器放行
-			System.out.println("验证成功");
+			System.out.println("认证登录成功");
 			response.sendRedirect(redirectUrl);
 		}else{
-			response.getOutputStream().write("验证失败!".getBytes());
+			response.getOutputStream().write("认证登录失败!".getBytes());
 		}
 	}
 }
