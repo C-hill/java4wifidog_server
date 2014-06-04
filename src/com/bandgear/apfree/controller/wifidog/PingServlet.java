@@ -58,10 +58,10 @@ public class PingServlet extends HttpServlet {
 		}
 		//2.apfree版wifidog
 		//2.1检查user_agent是否合法,不合法return
-		if(!Utils4Wifidog.checkUserAgent(req.getHeader("user-agent"))){
-			System.out.println("非法user_agent");
-			return;
-		}
+//		if(!Utils4Wifidog.checkUserAgent(req.getHeader("user-agent"))){
+//			System.out.println("非法user_agent");
+//			return;
+//		}
 		//2.2增加ap到数据库
 		Ap ap=new Ap();
 		ap.setDev_id(req.getParameter("dev_id"));

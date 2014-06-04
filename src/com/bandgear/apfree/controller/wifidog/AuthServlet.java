@@ -40,10 +40,10 @@ public class AuthServlet extends HttpServlet {
 		}
 		//2.apfree版wifidog
 		//2.1检查user_agent是否合法,不合法return
-		if(!Utils4Wifidog.checkUserAgent(request.getHeader("user-agent"))){
-			System.out.println("非法user_agent");
-			return;
-		}
+//		if(!Utils4Wifidog.checkUserAgent(request.getHeader("user-agent"))){
+//			System.out.println("非法user_agent");
+//			return;
+//		}
 		//2.2增加device
 		Device d=new Device();
 		d.setDownrate(Integer.parseInt(request.getParameter("downrate")));
