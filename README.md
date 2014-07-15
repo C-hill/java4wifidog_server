@@ -1,5 +1,3 @@
-java4wifidog_server
-===================
-
-wifidog认证服务器java实现
-README请点击：http://www.cnblogs.com/TonyChan7/p/3847433.html
+<br>
+README请点击：http://www.cnblogs.com/TonyChan7/p/3847433.html<br>
+wiki请点击：https://github.com/C-hill/java4wifidog_server/wiki
