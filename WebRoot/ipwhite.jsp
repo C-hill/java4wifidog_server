@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <font color="red"> 注：</font><br>
+   <font color="red"> 注：目前该接口没有用途，可忽略</font><br>
   <table border="1" cellspacing="1" cellpadding="0">
 	  <tr>
 	  	<td><font class="font-color-1"> device_token</font></td><td>对应ap表中'dev_md5'字段。</td>
@@ -39,20 +39,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
   	<br><br>
   -----------------------获取-------------------------------------<br>
+  获取某个路由器所有的ip白名单
   		<form name='get' action="<%=basePath%>api/client_op/ipwhite/get" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------增加-------------------------------------<br>
+  增加ip白名单
   		<form name='add' action="<%=basePath%>api/client_op/ipwhite/add" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
 			ip:<input type="text" name="ip" value="" /> <br>
-			netmask:<input type="text" name="netmask" value="" /> <br>
+			netmask:<input type="text" name="netmask" value="255.255.255.255" disabled/> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------删除-------------------------------------<br>
+  删除ip白名单
   		<form name='del' action="<%=basePath%>api/client_op/ipwhite/delete" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>

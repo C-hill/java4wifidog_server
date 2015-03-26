@@ -30,6 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
  <br><br>
   -----------------------获取-------------------------------------<br>
+  获取某个路由器当前在线的设备列表
   		<form name='get' action="<%=basePath%>api/client_list" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>

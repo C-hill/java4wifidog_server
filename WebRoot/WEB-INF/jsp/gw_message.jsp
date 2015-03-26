@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>登陆认证</title>
+    <title>error</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -31,18 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <body>
 	<div class="container">
-      <form class="form-signin" role="form" method="post" action="<%=basePath%>loginValidate">
-      	<input type="hidden" name="gw_address" value="${param.gw_address}">
-        <input type="hidden" name="gw_port" value="${param.gw_port}">
-        <input type="hidden" name="gw_id" value="${param.gw_id}">
-        <input type="hidden" name="url" value="${param.url}">
-        <input type="hidden" name="dev_id" value="${param.dev_id}">
-        <input type="hidden" name="mac" value="${param.mac}">
-        <h3 class="form-signin-heading">请认证登录</h3>
-        <input type="text" class="form-control" name="username" placeholder="用户名" required autofocus>
-        <input type="password" class="form-control" name="password" placeholder="密码" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">确定</button>
-      </form>
+		错误信息:${param.message}
     </div>
   </body>
 </html>

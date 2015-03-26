@@ -43,6 +43,11 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.bandgear.apfree.controller.wifidog.LoginServlet</servlet-class>
   </servlet>
+<!--                       gw_message                  -->
+  <servlet>
+    <servlet-name>GwMessageServlet</servlet-name>
+    <servlet-class>com.bandgear.apfree.controller.wifidog.GwMessageServlet</servlet-class>
+  </servlet>
   
   
   <servlet>
@@ -114,6 +119,10 @@
   <servlet-mapping>
     <servlet-name>LoginValidateServlet</servlet-name>
     <url-pattern>/loginValidate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GwMessageServlet</servlet-name>
+    <url-pattern>/wifidog/gw_message/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>

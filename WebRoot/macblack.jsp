@@ -33,12 +33,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
   	<br><br>
   -----------------------获取-------------------------------------<br>
+  获取某个路由器所有的mac黑名单
   		<form name='get' action="<%=basePath%>api/client_op/macblack/get" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------增加-------------------------------------<br>
+  增加mac黑名单
   		<form name='add' action="<%=basePath%>api/client_op/macblack/add" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
@@ -46,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------删除-------------------------------------<br>
+  删除mac黑名单
   		<form name='del' action="<%=basePath%>api/client_op/macblack/delete" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>

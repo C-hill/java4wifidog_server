@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <font color="red"> 注：</font><br>
+   <font color="red"> 注：用于实现用户名密码认证</font><br>
   <table border="1" cellspacing="1" cellpadding="0">
 	  <tr>
 	  	<td><font class="font-color-1"> device_token</font></td><td>对应ap表中'dev_md5'字段。</td>

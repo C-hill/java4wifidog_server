@@ -9,7 +9,7 @@ Date: 2014/1/15 10:08:11
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for ap
+-- Table structure for ap 路由器表
 -- ----------------------------
 DROP TABLE IF EXISTS `ap`;
 CREATE TABLE `ap` (
@@ -37,7 +37,7 @@ CREATE TABLE `ap_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='pa管理用户帐号信息';
 
 -- ----------------------------
--- Table structure for ap_portal
+-- Table structure for ap_portal portal页面表
 -- ----------------------------
 DROP TABLE IF EXISTS `ap_portal`;
 CREATE TABLE `ap_portal` (
@@ -50,7 +50,7 @@ CREATE TABLE `ap_portal` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='记录不同pc不同跳转页面的表格';
 
 -- ----------------------------
--- Table structure for ap_status
+-- Table structure for ap_status 路由状态表
 -- ----------------------------
 DROP TABLE IF EXISTS `ap_status`;
 CREATE TABLE `ap_status` (

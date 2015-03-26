@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>接口</title>
+    <title>接口测试</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -33,5 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="<%=basePath%>ipwhite.jsp">ipwhite接口</a><br><br>
     <a href="<%=basePath%>macblack.jsp">macblack接口</a><br><br>
     <a href="<%=basePath%>macwhite.jsp">macwhite接口</a><br><br>
+    
+    为了满足wifidog的接口标准，请配置Tomcat的server.xml文件，参见：https://github.com/C-hill/java4wifidog_server/wiki
   </body>
 </html>

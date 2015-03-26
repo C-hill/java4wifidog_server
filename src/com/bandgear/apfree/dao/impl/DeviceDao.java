@@ -85,4 +85,24 @@ public class DeviceDao implements Dao<Device>{
 		qr.update("update client set ip=?,token=?,outgoing=?,incoming=?,uprate=?,downrate=?,login_count=?,update_time=?,login_time=? where ap_id =(select ap_id from ap where dev_id=?) and mac=?", 
 				new Object[]{t.getIp(),t.getToken(),t.getOutgoing(),t.getIncoming(),t.getUprate(),t.getDownrate(),t.getLogin_count(),t.getUpdate_time(),t.getLogin_time(),devId,t.getMac()});
 	}
+
+	public Device findByDevIdAndMac(String devId, String mac) throws SQLException {
+		List<Device> query = qr.query("select * from client where ap_id =(select ap_id from ap where dev_id=?) and mac=?", 
+				new BeanListHandler(Device.class), new Object[]{devId,mac});
+		if(query.size()==0){
+			return null;
+		}
+		return query.get(0);
+	}
+
+	public void update(Device device, String token) throws SQLException {
+		qr.update("update client set token=? where ap_id =? and mac=?", 
+				new Object[]{token,device.getAp_id(),device.getMac()});
+	}
+
+	public void add(String devId, String mac, String token) throws SQLException {
+		Device d=new Device();
+		qr.update("insert into client(ap_id,kind,ip,mac,token,incoming,outgoing,status,login_count,update_time,login_time) values((select ap_id from ap where dev_id=?),?,?,?,?,?,?,?,?,?,?)", 
+				new Object[]{devId,d.getKind(),d.getIp(),mac,token,d.getIncoming(),d.getOutgoing(),d.getStatus()+"",d.getLogin_count(),d.getUpdate_time(),d.getLogin_time()});
+	}
 }

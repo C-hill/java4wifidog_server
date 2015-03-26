@@ -76,5 +76,22 @@ public class DeviceServiceImpl implements DeviceService {
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public void updateToken(String devId,String mac,String token) throws SQLException {
+		Device device=((DeviceDao)d).findByDevIdAndMac(devId,mac);
+		if(device!=null){
+			((DeviceDao)d).update(device,token);
+		}else{
+			((DeviceDao)d).add(devId,mac,token);
+		}
+	}
+	@Override
+	public boolean checkToken(String token, String devId, String mac) throws SQLException {
+		Device device=((DeviceDao)d).findByDevIdAndMac(devId,mac);
+		if(device.getToken().equals(token)){
+			return true;
+		}
+		return false;
+	}
 
 }

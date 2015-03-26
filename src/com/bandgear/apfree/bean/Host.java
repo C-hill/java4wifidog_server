@@ -8,13 +8,13 @@ public class Host implements Serializable{
 	 * host主要可以实现针对某个ip或网段的限速
 	 */
 	private Integer id;
-	private Integer ap_id;
-	private String ip;
-	private Integer up;
-	private Integer down;
-	private String netmask;
-	private Integer enable;
-	private Integer session;
+	private Integer ap_id;//对应路由的ap_id
+	private String ip;//目标ip或网段
+	private Integer up;//上行速率
+	private Integer down;//下行速率
+	private String netmask;//掩码，跟ip一起表示某个网段
+	private Integer enable;//是否可用，可忽略
+	private Integer session;//连接数
 	public Host(Integer id, Integer up, Integer down, Integer enable, String ip,
 			String netmask) {
 		this.id=id;

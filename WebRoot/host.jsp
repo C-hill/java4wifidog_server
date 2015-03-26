@@ -43,12 +43,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<br><br>
   
   -----------------------获取-------------------------------------<br>
+  	获取某个路由器的所有限速规则，可用户在客户端显示出来
   		<form name='get' action="<%=basePath%>api/client_op/host/get" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------增加-------------------------------------<br>
+  对某个网段下达限速规则（实现流量控制）
   		<form name='add' action="<%=basePath%>api/client_op/host/add" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
@@ -59,6 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------删除-------------------------------------<br>
+  删除针对某网段的限速规则（解除流量控制）
   		<form name='del' action="<%=basePath%>api/client_op/host/delete" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>
@@ -66,6 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="submit" value="确定"/>
 		</form>
   -----------------------修改-------------------------------------<br>
+  修改针对某网段的限速规则
   		<form name='modify' action="<%=basePath%>api/client_op/host/modify" method="get">
 			<br>
 			device_token:<input type="text" name="device_token" value="" /> <br>

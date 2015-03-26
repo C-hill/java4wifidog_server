@@ -10,18 +10,18 @@ public class Device implements Serializable{
 	 */
 	private Integer id;//
 	private Integer ap_id;
-	private Integer kind;//客户端类型： 1，pc 2，移动设备
-	private String ip;//连接设备的ip地址
+	private Integer kind=1;//客户端类型： 1，pc 2，移动设备
+	private String ip="0.0.0.0";//连接设备的ip地址
 	private String mac;// mac地址
 	private String token; 
-	private Integer outgoing;//上传流量 单位 b
-	private Integer incoming;//下载流量 单位 b
-	private Integer uprate;//上传速度
-	private Integer downrate;//下载速度
-	private Integer status;//状态： 1.登录请求  3.计数状态（在线）
-	private Integer login_count;
-	private Date update_time;//最后更新时间
-	private Date login_time;
+	private Integer outgoing=0;//上传流量 单位 b
+	private Integer incoming=0;//下载流量 单位 b
+	private Integer uprate=0;//上传速度
+	private Integer downrate=0;//下载速度
+	private Integer status=0;//状态： 1.登录请求  3.计数状态（在线）
+	private Integer login_count=0;
+	private Date update_time=new Date();//最后更新时间
+	private Date login_time=new Date();
 	
 	//---------------------
 	private String netmask;//子网掩码(没使用)
