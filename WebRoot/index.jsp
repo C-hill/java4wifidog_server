@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+	<meta http-equiv="description" content="Java Wifi Dongle Server Program">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -24,11 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   apfree版wifidog认证服务器相关接口测试<hr>
-    <a href="<%=basePath%>wifidog.jsp">wifidog接口</a><br><br>
+    <a href="<%=basePath%>wifidog.jsp">JAVA wifi Dongle Server(接口)</a><br><br>
     <br>
     <a href="<%=basePath%>router.jsp">router接口</a><br><br>
     <a href="<%=basePath%>device.jsp">device接口</a><br><br>
-    <a href="<%=basePath%>user.jsp">user接口</a><br><br>
+    <a href="<%=basePath%>user.jsp">Click here to Login(接口)</a><br><br>
     <a href="<%=basePath%>host.jsp">host接口</a><br><br>
     <a href="<%=basePath%>ipwhite.jsp">ipwhite接口</a><br><br>
     <a href="<%=basePath%>macblack.jsp">macblack接口</a><br><br>
